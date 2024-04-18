@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>childrenSelector</title>
+  </head>
+  <style>
+    body em {
+      color: red;
+    }
+    body > h1 {
+      color: blue;
+    }
+    div {
+      padding: 10px;
+    }
+    body > div > div {
+      border: 3px solid red;
+    }
+  </style>
+  <body>
+    <!-- <div>
+      <h1>이 제목은 <em>매우</em>중요합니다.</h1>
+    </div>
+    <h1>이 제목은 <em>매우</em>중요합니다.</h1> -->
+    <div>
+      첫번째 div
+      <div>
+        두번째 div
+        <div>세번째 div</div>
+      </div>
+      <div>
+        두번째 div
+        <div>세번째 div</div>
+      </div>
+    </div>
+  </body>
+</html>

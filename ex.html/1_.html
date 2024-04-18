@@ -7,20 +7,21 @@
   </head>
   <body>
     <h2>회원가입</h2>
+    <form>
     <fieldset>
       <legend>필수 입력 사항</legend>
 
-      <p>
+      <div>
         ID
         <input type="text" placeholder="아이디 10글자 이내" />
-        <input type="submit" value="중복확인" />
-      </p>
-      <p>
+         <button>중복확인</button>
+      </div>
+      <div>
         비밀번호
         <input type="password" placeholder="영문,숫자,특수문자 포함 8자 이상" />
-      </p>
-      <p>비밀번호 확인 <input type="password" /></p>
-      <p>
+      </div>
+      <div>비밀번호 확인 <input type="password" /></div>
+      <div> 
         Email <input type="email" />
         <select name="email">
           <option value="naver.com">네이버</option>
@@ -28,11 +29,11 @@
           <option value="gmail.com">구글</option>
           <option value="직접입력" selected>직접입력</option>
         </select>
-      </p>
+      </div>
     </fieldset>
     <fieldset>
       <legend>추가 정보</legend>
-      프로필 사진 <input type="file" value="파일선택" />
+      프로필 사진 <input type="file" accept="image/*" />
       <p>
         성별:
         <input type="radio" name="gender" id="male" value="male" />
@@ -55,15 +56,16 @@
     </br>
      
         <input type="checkbox" id="기타" />
-        <label for="기타">기타 <input type="text" /></label>
+        <label for="atc">기타 <input type="text" /></label>
   </br>
       <br>자기소개</br>
-      <textarea name="" id="" cols="50" rows="10"></textarea>
+      <textarea  cols="50" rows="10"></textarea>
     </fieldset>
     <p>
       <input type="submit" value="회원가입" />
-      <input type="submit" value="다시입력" />
-      <input type="submit" value="이전으로" />
+      <input type="reset" value="다시입력" />
+      <input type="button" value="이전으로" onclick="history.go(-1);" />
     </p>
+  </form>
   </body>
 </html>
