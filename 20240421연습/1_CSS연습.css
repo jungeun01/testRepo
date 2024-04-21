@@ -1,0 +1,19 @@
+h1 {
+  font-family: serif;
+  color: fuchsia;
+}
+span {
+  font-size: 4em;
+  color: blue;
+}
+em {
+  font-size: 1.7em;
+  color: brown;
+}
+h1 {
+  border-bottom: 2px solid peru;
+}
+body {
+  font-size: larger;
+  background-color: cadetblue;
+}

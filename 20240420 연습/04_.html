@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="input">
+      <p>이름: <input type="text" /></p>
+      <p>비밀번호 <input type="password" /></p>
+      <p>라디오버튼생성 <input type="radio" /></p>
+      <p>파일 <input type="file" /></p>
+      <p>이미지를 전송 버튼으로 만듬<input type="image" name="" id="" /></p>
+      <br />
+      이름: <input type="text" /> 학번: <input type="text" name="number" />
+      <br />
+      <input type="submit" value="제출" />
+      <input type="reset" value="초기화" />
+      <br />
+      <input type="button" value="계산" onclick="alert('10000원입니다.')" />
+      <br />
+      아이디: <input type="text" />
+      <br />
+      <input
+        type="image"
+        src="../resources/img/check.png"
+        alt="제출버튼"
+        width="50"
+      />
+      <br />
+      고객의 의견 <br />
+      <textarea name="feedback" id="" cols="30" rows="10"></textarea> <br />
+      <select name="cars" id="">
+        <option value="bmw">BMW</option>
+        <option value="k">기아</option>
+        <option value="h" selected>현대</option>
+        <!-- selected:표에 처음으로 표시되는거 -->
+      </select>
+      <fieldset>
+        <legend>인적사항입력</legend>
+        이름: <input type="text" /> <br />
+        전화번호: <input type="tel" /> <br />
+        주소:
+        <input type="text" />
+      </fieldset>
+    </form>
+  </body>
+</html>
