@@ -17,9 +17,9 @@
     body {
       margin: 0;
     }
-    #a h2 {
+    /* #a h2 {
       margin: 0;
-    }
+    } */
     #aa {
       display: flex;
       flex-direction: column;
@@ -27,22 +27,28 @@
     }
     #a {
       background-color: rgba(241, 153, 121, 0.863);
-      border-radius: 40px;
+
       text-align: center;
     }
     #b {
       background-color: rgb(234, 171, 231);
-      border-radius: 40px;
+
       display: flex;
       justify-content: center;
-      list-style-type: none;
+
       flex-grow: 2;
     }
-
+    #b a {
+      text-decoration: none;
+    }
+    #c li {
+      background-color: #d8a8a8;
+      margin-right: 10px;
+    }
     #cc {
       display: flex;
-      /* flex-direction: column; */
-      padding: 10px;
+
+      /* padding: 10px; */
     }
     .com div {
       display: flex;
@@ -53,21 +59,19 @@
     #c {
       display: flex;
       background-color: plum;
-      border-radius: 40px;
-      flex-grow: 2;
-      padding: 10px;
-    }
 
+      flex-grow: 2;
+    }
     #d {
       background-color: white;
     }
     #e {
       background-color: plum;
-      border-radius: 40px;
     }
     #f {
       background-color: palevioletred;
-      border-radius: 40px;
+      text-align: center;
+      padding: 10px 0;
     }
   </style>
   <body>
@@ -90,17 +94,15 @@
       <div id="cc">
         <div id="c">
           <h3>카테고리</h3>
-          <div id="ca">
-            <ul>
-              <li>컴퓨터</li>
-              <li>의류</li>
-              <li>음악</li>
-              <li>영화</li>
-              <li>스포츠/레저</li>
-              <li>가구/인테리어</li>
-              <li>식품</li>
-            </ul>
-          </div>
+          <ul>
+            <li>컴퓨터</li>
+            <li>의류</li>
+            <li>음악</li>
+            <li>영화</li>
+            <li>스포츠/레저</li>
+            <li>가구/인테리어</li>
+            <li>식품</li>
+          </ul>
         </div>
         <div id="d">
           <div class="com">
