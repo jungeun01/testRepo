@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스폰지밥</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+    #q {
+      border: 5px solid blue;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    #a {
+      background-color: rgba(233, 113, 235, 0.596);
+      /* display: flex; */
+      /* justify-content: center; */
+      padding: 30px;
+      /* flex-grow: 2; */
+      border-radius: 40px;
+      text-align: center;
+      margin-top: 5px;
+    }
+    #a h1 {
+      margin-top: 0;
+    }
+    #bb {
+      display: flex;
+      flex-grow: 4;
+      margin: 5px;
+    }
+    #b {
+      background-color: #9585ec;
+      display: flex;
+      flex-direction: column;
+      border-radius: 40px;
+      flex-basis: 300px;
+      padding: 20px;
+      margin-right: 5px;
+    }
+    li a {
+      color: white;
+      text-decoration: none;
+    }
+    #c {
+      background-color: #d1a7d1;
+      border-radius: 30px;
+      padding: 40px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    li:nth-child(2) a,
+    li:nth-child(3) a {
+      color: yellow;
+    }
+    #cc {
+      flex-grow: 2;
+      border-style: dotted;
+      border-radius: 20px;
+      padding: 30px;
+      background-color: #fbd4f2;
+    }
+    #cc:first-child {
+      margin-bottom: 10px;
+    }
+
+    #d {
+      background-color: #f3ecf5;
+      /* display: flex; */
+      /* flex-grow: 1; */
+      border-radius: 40px;
+      text-align: center;
+      margin-bottom: 5px;
+      padding: 10px 0;
+    }
+    #d div {
+      margin-top: 0;
+    }
+    .m {
+      margin-top: auto;
+    }
+  </style>
+  <body>
+    <div id="q">
+      <div id="a">
+        <h1>My Blog Page</h1>
+        <div>시멘틱 태그로 만들어진 페이지 입니다.</div>
+      </div>
+      <div id="bb">
+        <div id="b">
+          <h2>Links</h2>
+          <ul>
+            <li><a href="https://www.w3schools.com/">W3schools</a></li>
+            <li><a href="https://www.naver.com/">Naver</a></li>
+            <li><a href="https://www.daum.nat/">Daum</a></li>
+          </ul>
+          <div class="m">
+            <img
+              src="../resources/img/스폰지.webp"
+              width="200px"
+              height="200px"
+            />
+            <div>스폰지밥</div>
+          </div>
+        </div>
+        <div id="c">
+          <div id="cc">
+            <h2>Semantic Tags</h2>
+            <div>
+              시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나
+              목적을 명확하게 알려주는 요소이다. 레이아웃을 만들때 쓰는 것,
+              의미가 있는요소라면 div보다는 시멘틱 태그를 사용해준다.
+            </div>
+          </div>
+          <div id="cc">
+            <h2>div와 span</h2>
+            <div>
+              div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데
+              사용되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한
+              컨테이너로 사용할 수 있다.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="d">copyright (c)2019 Hong</div>
+    </div>
+  </body>
+</html>
