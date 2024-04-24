@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* 영역 나누기 방법 */
+    body > div {
+      border: 5px solid red;
+      display: flex;
+      height: 800px;
+    }
+    .aside {
+      background-color: aqua;
+      /* flex-grow: 1; */
+      width: 15%;
+    }
+    .canter {
+      background-color: yellow;
+      /* flex-grow: 5; */
+      width: 70%;
+    }
+  </style>
+  <body>
+    <div>
+      <div class="aside"></div>
+      <div class="canter"></div>
+      <div class="aside"></div>
+    </div>
+  </body>
+</html>
