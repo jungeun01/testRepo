@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid area</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      border: 5px solid rgb(222, 23, 196);
+      height: 500px;
+
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      grid-template-rows: 1fr 1fr 3fr 1fr;
+      grid-template-areas:
+        "header header header "
+        "aside aside aside "
+        "abc main  abcd  "
+        "footer footer footer";
+      /* "header header header "
+        "abc aside aside "
+        "abc main  abcd  "
+        "abc footer footer"; */
+      /* 공백만들때 .사용 */
+      gap: 5px;
+    }
+
+    li {
+      background-color: #fff0f6;
+      border: 5px solid#d0bfff;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    li:nth-child(1) {
+      grid-area: header;
+    }
+    li:nth-child(2) {
+      grid-area: aside;
+    }
+    li:nth-child(3) {
+      grid-area: main;
+    }
+    li:nth-child(4) {
+      grid-area: footer;
+    }
+    li:nth-child(5) {
+      grid-area: abc;
+    }
+    li:nth-child(6) {
+      grid-area: abcd;
+    }
+  </style>
+  <body>
+    <ul class="container">
+      <li class="item">HEADER</li>
+      <li class="item">ASIDE</li>
+      <li class="item">MAIN</li>
+      <li class="item">FOOTER</li>
+      <li class="item">ABC</li>
+      <li class="item">ABCD</li>
+    </ul>
+  </body>
+</html>

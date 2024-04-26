@@ -28,13 +28,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #c4c3ca;
     }
     #main {
       width: 500px;
       height: 500px;
-      background-color: #fafafa;
+      /* background-color: #fafafa; */
       display: flex;
       flex-direction: column;
+      background-color: #2a2b38;
+    }
+    .icon {
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      top: 25%;
+      left: 5px;
+      color: rgba(236, 236, 103, 0.705);
+    }
+    #input-section input:not([type="submit"]) {
+      width: 100%;
+      padding: 2% 6%;
+      font-weight: 500%;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      border: none;
+      background-color: #1f2029;
+      color: #c4c3ca;
+    }
+    #input-section input:not([type="submit"]):focus {
+      border: none;
+      outline: none;
     }
     h3 {
       margin: 50px;

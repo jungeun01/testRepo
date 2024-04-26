@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+    .head {
+      display: grid;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      list-style-type: none;
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 1fr 2fr 100px;
+      grid-template-areas:
+        "a a a"
+        "b c c"
+        "d d d";
+      gap: 5px;
+    }
+
+    .a {
+      grid-area: a;
+      background-color: #fff9db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+    }
+
+    .b {
+      grid-area: b;
+      background-color: #fbd4f2;
+      border-radius: 40px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    #img {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .link a {
+      text-decoration: none;
+      color: white;
+    }
+    .link li {
+      text-align: center;
+    }
+    .na a {
+      color: yellow;
+    }
+    .c {
+      grid-area: c;
+      background-color: #f3f0ff;
+      border-radius: 40px;
+    }
+    #c div {
+      border: 1px dashed rgb(106, 156, 122);
+      padding: 50px;
+      margin: 30px;
+      border-radius: 40px;
+    }
+    .d {
+      grid-area: d;
+      background-color: #e5f4fb;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 40px;
+    }
+  </style>
+  <body>
+    <ul class="head">
+      <li class="a">
+        <div class="ha">
+          <h1>My Blog Page</h1>
+          <div>시멘틱 태그로 만들어진 페이지 입니다.</div>
+        </div>
+      </li>
+      <li class="b">
+        <h2>Links</h2>
+        <ul class="link">
+          <li><a href="#">W3schools</a></li>
+          <li class="na"><a href="#">Naver</a></li>
+          <li class="na"><a href="#">Daum</a></li>
+          <div id="img">
+            <img
+              src="../resources/img/스폰지바압.gif"
+              width="100px"
+              height="200px"
+            />
+            <p>스폰지밥</p>
+          </div>
+        </ul>
+      </li>
+      <li class="c">
+        <div id="c">
+          <div>
+            <h2>Semantic Tags</h2>
+
+            시멘틱 요소들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는
+            요소이다. 레이아웃을 만들때 쓰는 것, 의미가 있는 요소라면 div보다는
+            시멘틱 태그를 사용해준다.
+          </div>
+
+          <div>
+            <h2>div와span</h2>
+
+            div와'divide'의 약자로서 페이지를 논리적인 섹션으로 분리하는데
+            사용되는 태그이다.span요소는 인라인요소로서 텍스트를 위한 컨테이너로
+            사용할 수 있다.
+          </div>
+        </div>
+      </li>
+      <li class="d">copyright (c)2019 Hong</li>
+    </ul>
+  </body>
+</html>
