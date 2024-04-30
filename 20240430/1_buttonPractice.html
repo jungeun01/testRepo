@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼 연습</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      padding: 1rem;
+    }
+    a {
+      display: inline-block;
+      font-size: 22px;
+      padding: 20px 60px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15) inset;
+    }
+    .content h2 {
+      color: #d1b3e0;
+    }
+    .btn {
+      border: 2px solid #d1b3e0;
+      color: #d1b3e0;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .btn::before {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      /* transform: scaleY(0); */
+      background-color: #d1b3e0;
+      z-index: -1;
+      transition: all 0.3s;
+    }
+    .btn:hover::before {
+      /* transform: scaleY(1); */
+      height: 100%;
+    }
+    .btn:hover {
+      color: white;
+    }
+
+    .content01 h2 {
+      color: #b197fc;
+    }
+    .btn01 {
+      background-color: #b197fc;
+      color: white;
+      position: relative;
+      transition: all 0.3s;
+      /* box-shadow: 0 0 3px 5px #d0bfff; */
+    }
+
+    .btn01:hover {
+      animation: pulse 0.5s;
+    }
+    @keyframes pulse {
+      from {
+        box-shadow: 0 0 0 0 #b197fc;
+      }
+      to {
+        box-shadow: 0 0 0 18px transparent;
+      }
+    }
+    .btn02 {
+      color: #fcc2d7;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .btn02::before,
+    .btn02::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: white;
+      transform: scaleX(1);
+      left: 0;
+      transform: scaleX(0);
+      transition: all 0.3s;
+    }
+    .btn02::before {
+      top: 0;
+    }
+    .btn02::after {
+      bottom: 0;
+    }
+    .btn02:hover::before,
+    .btn02:hover::after {
+      background-color: #fcc2d7;
+      transform: scaleX(1.2);
+    }
+    .btn02:hover {
+      letter-spacing: 7px;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div class="content">
+        <h2>Fill Up Button</h2>
+        <a href="#" class="btn">Fill Up</a>
+      </div>
+      <div class="content01">
+        <h2>Pulse Button</h2>
+        <a href="#" class="btn01">Pulse</a>
+      </div>
+      <div class="content02">
+        <h2>Line Button</h2>
+        <a href="#" class="btn02">Line</a>
+      </div>
+    </div>
+  </body>
+</html>

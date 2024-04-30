@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 400px;
+      /* perspective:원근 조절 숫자가 작아질수록 더가까워짐 */
+    }
+    .card {
+      width: 300px;
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.3);
+      position: relative;
+      /* transform: rotateY(90deg); */
+      transform-style: preserve-3d;
+      transition: all 10s;
+    }
+    .card:hover {
+      transform: rotateY(360deg);
+    }
+    .card > div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    .card > div:nth-child(1) {
+      background-color: orange;
+      transform: translateZ(150px);
+    }
+    .card > div:nth-child(2) {
+      background-color: yellow;
+      transform: translateX(-150px) rotateY(-90deg);
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div class="card">
+        <div>RIGHT</div>
+        <div>LEFT</div>
+      </div>
+    </div>
+  </body>
+</html>
