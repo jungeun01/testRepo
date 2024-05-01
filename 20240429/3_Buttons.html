@@ -30,7 +30,6 @@
       text-decoration: none;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15) inset;
     }
-    /* 3d */
     .btn-3d {
       position: relative;
     }
@@ -51,8 +50,6 @@
     .btn-3d:active {
       top: 9px;
     }
-
-    /* fade */
     .orange {
       background-color: #ffaa40;
     }
@@ -60,7 +57,6 @@
       background-color: #ff8300;
       transition: all 0.2s;
     }
-    /* border */
     .purple {
       background-color: #a74982;
     }
@@ -71,7 +67,6 @@
       box-shadow: 0 0 0 5px #6d184b;
       transition: all 0.2s;
     }
-    /* click */
     .skyblue {
       background-color: #4ec0e9;
     }
@@ -107,18 +102,11 @@
         transform: scale(1);
       }
     }
-
-    /* gradient */
-
     .purpleblue {
     }
     .gradient {
-      /* background-color: #e0e5ec; */
-      background-color: transparent;
+      background-color: #e0e5ec;
       position: relative;
-      overflow: hidden;
-      box-shadow: 2px 2px 2px 0px rgba(255, 255, 255, 0.5) inset,
-        7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     }
     .gradient::after {
       content: "";
@@ -127,39 +115,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      z-index: -1;
       background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-    .gradient:hover::after {
-      transform: scale(1.5) rotate(180deg);
-    }
-    /* open */
-    .openBtn {
-      border: 2px solid #4dbde5;
-      color: #4dbde5;
-      position: relative;
-      transition: 0.3s;
-    }
-    .openBtn::before {
-      content: "";
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #4dbde5;
-      transform: scalex(0);
-      transition: 0.3s;
-      z-index: -1;
-    }
-    .openBtn:hover::before {
-      transform: scalex(1);
-    }
-    .openBtn:hover {
-      color: white;
     }
   </style>
   <body>
@@ -183,10 +139,6 @@
       <div class="content">
         <h2>gradient button</h2>
         <a href="#" class="gradient purpleblue">Gradient</a>
-      </div>
-      <div class="content">
-        <h2>open button</h2>
-        <a href="#" class="openBtn">Open</a>
       </div>
     </div>
   </body>
