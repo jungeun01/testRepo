@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수 연습</title>
+  </head>
+  <body>
+    <script>
+      function show(message = "No Text!!") {
+        alert(message);
+      }
+      show(); //여기까지가 경고창 띄우는 함수
+
+      // 밑부터 숫자
+      function ned(a = 3, b = 1) {
+        let result = a * b;
+        // result = a % b;
+        document.write(result);
+      }
+
+      ned(5, 5); //위에 숫자와 상관없이 여기서 출력하는 것
+    </script>
+  </body>
+</html>
