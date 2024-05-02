@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수 연습</title>
+  </head>
+  <style>
+    p {
+      font-size: 2rem;
+      color: blue;
+      background-color: yellow;
+      font-weight: 800;
+    }
+    .result {
+      font-size: 3rem;
+      color: red;
+      background-color: yellow;
+      font-weight: 800;
+    }
+  </style>
+  <body>
+    <script>
+      //1. 입력값은 전달받아 경고창을 띄워주는 함수를 작성하세요.
+      function showAlert(param = "No text!!!") {
+        alert(param);
+        // console.log(message);
+      }
+
+      // 2. 두개의 숫자를 입력받아두개의 숫자를나눈 나머지를 화면에 출력하는 함수를 작성하세요.
+      function add(a = 1, b = 1) {
+        let result = 0;
+        result = a % b;
+        document.write(`<div class='result'>${result}</div>`);
+      }
+      showAlert();
+      add(30, 7);
+    </script>
+  </body>
+</html>
