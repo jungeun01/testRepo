@@ -20,6 +20,7 @@
     }
   </style>
   <body>
+    <div class="result"></div>
     <script>
       //1. 입력값은 전달받아 경고창을 띄워주는 함수를 작성하세요.
       function showAlert(param = "No text!!!") {
@@ -32,6 +33,7 @@
         let result = 0;
         result = a % b;
         document.write(`<div class='result'>${result}</div>`);
+        // <div class="result" ></div>
       }
       showAlert();
       add(30, 7);

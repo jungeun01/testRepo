@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문 연습</title>
+  </head>
+  <body>
+    <script>
+      //0. 변수 선언
+      let a, b, c;
+
+      let result;
+      //1. 첫번째 숫자를 입력받을 프롬포트를 띄운다.
+      a = +prompt("첫번째 숫자를 입력하세요");
+      //parseInt 로 사용할수 있음
+
+      //2. 두번째 숫자를 입력받을 프롬포트를 띄운다.
+      b = +prompt("두번째 숫자를 입력하세요");
+
+      //3. 연산자를 입력받을 프롬포트를 띄운다.
+      c = prompt("연산자를 입력하세요(+, -, *, /, %) 중하나");
+
+      //4.연산자를 확인할 조건문안에서 계산 결과를 도출한다.
+
+      if (c == "+") {
+        result = a + b;
+      } else if (c == "-") {
+        result = a - b;
+      } else if (c == "*") {
+        result = a * b;
+      } else if (c == "/") {
+        result = a / b;
+      } else {
+        result = a % b;
+      }
+      //   if (c == "+") {
+      //     result = a + b;
+      //   }
+      //   if (c == "-") {
+      //     result = a - b;
+      //   }
+      //   if (c == "*") {
+      //     result = a * b;
+      //   }
+      //   if (c == "/") {
+      //     result = a / b;
+      //   }
+      //   if (c == "%") {
+      //     result = a % b;
+      //   }
+      //5. 화면에 출력한다.
+      document.write(`<h1>계산결과</h1>`);
+      document.write(`<h2>${a}${c}${b}=${result}</h2>`);
+      console.log(result);
+    </script>
+  </body>
+</html>

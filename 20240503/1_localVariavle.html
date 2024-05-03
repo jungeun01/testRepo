@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지역 변수</title>
+  </head>
+  <body>
+    <script>
+      //   let sum;
+      let num = 0; //전역 변수:블록밖에서 사용가능
+      //함수선언식
+      function showAlert() {
+        sum = 0;
+        let message; //지역변수 :블록안에서 사용가능 블록밖에서는 사용못함
+        alert(num);
+      }
+
+      //   alert(window.sum);
+      alert(sum);
+
+      //함수표현식
+      //   const func=funstion(){}
+    </script>
+  </body>
+</html>

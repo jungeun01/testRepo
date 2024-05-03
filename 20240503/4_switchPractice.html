@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch 연습</title>
+  </head>
+  <body>
+    <script>
+      //100~90:A ,90~81:B, 80~71:C, 70~61:D 그 외:f
+      let grade = +prompt("점수(0~100)를 입력하세요");
+      //&&:AND 연산자,|| :OR 연산자
+      let score;
+
+      if (90 <= grade && 100 >= grade) {
+        score = "A 학점입니다.";
+      } else if (81 <= grade && 90 >= grade) {
+        score = "B 학점입니다.";
+      } else if (71 <= grade && 80 >= grade) {
+        score = "C 학점입니다.";
+      } else if (61 <= grade && 70 >= grade) {
+        score = "D 학점입니다.";
+      } else {
+        score = "F 학점입니다.";
+      }
+
+      document.write(`<h1>성적서</h1>`);
+      //   document.write(`<h2 style='color:red;'>학점:${score}</h2>`);
+
+      //0.변수 선언
+      //   let rating,num
+      //1.사용자에게 점수를 입력받는다.
+
+      //2. 입력받은 점수를 바탕으로 성적 구간이 될 수 있는 값을 도출한다.
+
+      //3. 도출된 값을 switch문을 통해 성적을 구한다.
+
+      grade2 = parseInt(grade / 10);
+      switch (grade2) {
+        case 9:
+        case 10:
+          score = "A";
+          break;
+        case 8:
+          score = "B";
+          break;
+        case 7:
+          score = "C";
+          break;
+        case 6:
+          score = "D";
+          break;
+        default:
+          score = "F";
+          break;
+      }
+      //4.결과를 화면에 출력한다.
+      document.write(`<h2 style='color:red;'>학점:${score}</h2>`);
+    </script>
+  </body>
+</html>
