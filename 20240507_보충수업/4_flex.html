@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body,
+    #wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    #wrapper div {
+      width: 500px;
+      height: 800px;
+      border-radius: 50px;
+      background-color: cyan;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* box-shadow: 0 0 5px 10px #ffeeff, 0 0 5px 20px #ffddff,
+        0 0 5px 30px #ffccff; */
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.11),
+        0 2px 2px 0 rgba(0, 0, 0, 0.11), 0 4px 4px 0 rgba(0, 0, 0, 0.11),
+        0 8px 8px 0 rgba(0, 0, 0, 0.11), 0 16px 16px 0 rgba(0, 0, 0, 0.11),
+        0 32px 32px 0 rgba(0, 0, 0, 0.11), 0 0 8px 0 rgba(255, 255, 255) inset;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div>
+        <!-- <span>정렬</span> -->
+      </div>
+      <div>
+        <!-- <span>정렬</span> -->
+      </div>
+      <div>
+        <!-- <span>정렬</span> -->
+      </div>
+      <!-- <div>
+        <span>정렬</span>
+      </div>
+      <div>
+        <span>정렬</span>
+      </div> -->
+    </div>
+  </body>
+</html>

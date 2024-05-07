@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for 문</title>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i < 10; i++) {
+        document.write(`<h1>카운터:${i}</h1>`);
+      }
+      document.write(`<hr>`); //구분선
+      for (let i = 10; i >= 1; i--) {
+        document.write(`<h1>카운터:${i}</h1>`);
+      }
+      document.write(`<hr>`);
+      //구구단 2단
+      for (let i = 1; i <= 9; i++) {
+        document.write(`<h1>2x${i}=${2 * i}</h1>`);
+      }
+      document.write(`<hr>`);
+      //1~10까지의 합을 구하시오
+      //   let sum = 1;
+      //sum=sum+2;
+      //sum=sum+3;
+      //sum=sum+4;
+      let sum = 0;
+      for (let i = 1; i <= +10; i++) {
+        // sum=sum+1;
+        sum += i;
+      }
+      document.write(`<h1>1~10까지의 합:${sum}</h1>`);
+
+      //   for(let i=1; i<=10;i++){
+      //     document.write(`<h1>1+${i}=${1+i}</h1>`)
+      //   }
+
+      document.write(`<hr>`);
+      //1~20까지의 숫자 중에서 짝수만 출력을 하세요
+      for (let i = 1; i <= 20; i++) {
+        //짝수만 골라내는 조건문
+        if (i % 2 == 0) {
+          document.write(`<h1>1~20 짝수만 출력:${i}</h1>`);
+        }
+      }
+
+      document.write(`<hr>`);
+      //1~100까지의 숫자 중 홀수들의 합을 구하세요.
+      let a = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 2 == 1) {
+          a = a + i;
+        }
+      }
+      document.write(`<h1>홀수들의 합:${a}</h1>`);
+      document.write(`<hr>`);
+      //중첩반복문(nested Loop)
+      //   let i = 0;
+      //   if (i % 2 == 0) {
+      //     if (i == 2) {
+      //       alert("i는 2입니다.");
+      //     } else {
+      //       alert("i는2가 아닙니다.");
+      //     }
+      //   }
+      for (let i = 0; i < 10; i++) {
+        document.write(`<h1 style="color:red;">i 반복문${i}회차 시작</h1>`);
+        for (let j = 0; j < 10; j++) {
+          document.write(`<h1>j 반복문${j}회차 시작</h1>`);
+          document.write(`<h1>j 반복문${j}회차 끝</h1>`);
+        }
+        document.write(`<h1 style="color:red;">i 반복문${i}회차 끝</h1>`);
+      }
+      //1~9단까지의 구구단
+      for (let i = 1; i <= 10; i++) {
+        document.write(`<h1 style=
+        color:red;>${i}단<br></h1>`);
+        for (let j = 1; j <= 10; j++) {
+          document.write(`<h2>${i}x${j}=${i * j}<br></h2>`);
+        }
+        document.write(`<br>`);
+      }
+    </script>
+  </body>
+</html>
