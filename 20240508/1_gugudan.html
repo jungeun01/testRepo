@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구구단</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: "April16th-Promise";
+      src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/April16th-Promise.woff2")
+        format("woff2");
+      font-weight: 200;
+      font-style: normal;
+    }
+    body {
+      font-family: "April16th-Promise";
+      background-color: #ffefef;
+    }
+    table {
+      margin: 20px;
+      float: left;
+    }
+    table,
+    th {
+      border: 1px solid #ff5580;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      padding: 15px 20px;
+    }
+    th {
+      background-color: #ffb1b1;
+      color: white;
+    }
+    td {
+      border: 1px dotted #ff5580;
+      background-color: #ffeae3;
+      color: #ff0080;
+    }
+    h1 {
+      color: #eebefa;
+    }
+  </style>
+  <body>
+    <!-- <h1>구구단</h1>
+    <table>
+      <tr>
+        <th>2단</th>
+      </tr>
+      <tr>
+        <td>2 X 1= 2</td>
+      </tr>
+      <tr>
+        <td>2 X 2= 4</td>
+      </tr>
+      <tr>
+        <td>2 X 3= 6</td>
+      </tr>
+      <tr>
+        <td>2 X 4= 8</td>
+      </tr>
+      <tr>
+        <td>2 X 5= 10</td>
+      </tr>
+      <tr>
+        <td>2 X 6= 12</td>
+      </tr>
+      <tr>
+        <td>2 X 7= 14</td>
+      </tr>
+      <tr>
+        <td>2 X 8= 16</td>
+      </tr>
+      <tr>
+        <td>2 X 9= 18</td>
+      </tr>
+    </table> -->
+  </body>
+  <script>
+    document.write(`<h1>🌸구구단표🌸</h1>`);
+    for (let i = 2; i <= 10; i++) {
+      document.write(`<table>`);
+      document.write(`<tr>`);
+      document.write(`<th>${i}단</th>`);
+      document.write(`</tr>`);
+      for (let j = 1; j <= 9; j++) {
+        document.write(`<tr>`);
+        document.write(`<td>${i} X ${j} = ${i * j}</td>`);
+        document.write(`</tr>`);
+      }
+      document.write(`</table>`);
+    }
+  </script>
+</html>
