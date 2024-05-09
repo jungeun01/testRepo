@@ -82,13 +82,13 @@
     document.write(`<h1>🌸구구단표🌸</h1>`);
     for (let i = 2; i <= 10; i++) {
       document.write(`<table>`);
-      document.write(`<tr>`);
-      document.write(`<th>${i}단</th>`);
-      document.write(`</tr>`);
+      // document.write(`<tr>`);
+      document.write(`<tr><th>${i}단</th></tr>`);
+      // document.write(`</tr>`);
       for (let j = 1; j <= 9; j++) {
-        document.write(`<tr>`);
-        document.write(`<td>${i} X ${j} = ${i * j}</td>`);
-        document.write(`</tr>`);
+        // document.write(`<tr>`);
+        document.write(`<tr><td>${i} X ${j} = ${i * j}</td></tr>`);
+        // document.write(`</tr>`);
       }
       document.write(`</table>`);
     }
