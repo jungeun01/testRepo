@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>숫자 게임</title>
+  </head>
+  <style>
+    h1 {
+      color: #e097bb;
+    }
+    p {
+      color: #d255f1;
+    }
+    button {
+      background-color: #e3b2ef;
+      color: white;
+    }
+  </style>
+  <body>
+    <h1>Number Guess</h1>
+    <p>1~100 사이의 정수를입력하세요.</p>
+    <input id="number" type="text" value="" />
+    <button onclick="clickFn()">숫자 추측</button>
+    <p id="message"></p>
+  </body>
+  <script>
+    const input = document.querySelector("#number");
+    const pTag = document.querySelector("#message");
+    let randnum = 0;
+    let resstr = "";
+    const MAX_COUNT = 8;
+    let count = 0;
+
+    function reset() {
+      count = 0;
+      randnum = Random();
+      pTag.innerHTML = "";
+      resstr = "";
+      input.value = "";
+    }
+
+    function Random() {
+      return parseInt(Math.random() * 100) + 11;
+    }
+    randnum = Random();
+
+    function clickFn() {
+      if (count == MAX_COUNT) {
+        reset();
+        return false;
+      }
+      let inputnum = input.value;
+      if (randnum == inputnum) {
+        resstr = "정답!";
+        alert(resstr);
+        reset();
+      } else {
+        count++;
+        if (randnum > inputnum) {
+          resstr = `${inputnum}<&nbsp; 입력한 숫자 : ${inputnum}<br>`;
+        } else {
+          resstr = `입력한 숫자보다 작음. 입력한 숫자:${inputnum}<br>`;
+        }
+        pTag.innerHTML += resstr;
+      }
+      if (MAX_COUNT == count) {
+        resstr = `게임에서 패배함.랜덤 숫자는 ${randnum} 이었다. `;
+        pTag.innerHTML = resstr;
+      }
+    }
+  </script>
+</html>
