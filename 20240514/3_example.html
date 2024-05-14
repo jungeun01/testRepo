@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="hi">click</button>
+  </body>
+  <script>
+    //1.변수 두개를 선언하고 각각 초기값을 3,4 로 할당하세요.
+    let a = 3;
+    let b = 4;
+    //2.위의 두 변수의 합, 차, 곱, 나누기한 값을 콘솔창에 출력해보세요.
+    console.log(a + b);
+    console.log(a - b);
+    console.log(a * b);
+    console.log(a / b);
+
+    //3.위 문제에서 콘솔창에 출력 할 때 결과가 어떤 연산을 했는지 알  수 있도록
+    //결과값 왼쪽에 연산 내용을 표시해보세요.
+    //ex)a+b=결과
+    console.log(`${a}+${b}=${a + b}`);
+    console.log(`${a}-${b}=${a - b}`);
+    console.log(`${a}*${b}=${a * b}`);
+    console.log(`${a}/${b}=${a / b}`);
+
+    //4.  1번에서 선언한 변수 두개의 대소 비교를 하여 어떤 변수가 큰지를 alert 창으로 출력할 수 있게 작성해보세요(조건문 사용)
+    if (a < b) {
+      alert(`${a}이 ${b}작습니다`);
+    } else {
+      alert(`${a}이 ${b}큽니다`);
+    }
+    //5.비어있는 객체를 하나 생성해보세요.
+    let person = {};
+    //6.위에서 만든 객체에 num1과 num2라는 프로퍼티를 추가하고
+    //각각에  1번 문제에서 만든 변수를 할당하세요
+    person["num1"] = a;
+    person["num2"] = b;
+    console.log(person);
+    //8.비어있는 배열을 선언하고 그 배열에 1부터 10까지 숫자를 추가해보세요.
+    //(선언 이후에 값을 넣는 방법 사용)
+    let arr = [];
+    arr.push(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    console.log(arr);
+
+    //9.비어있는 배열을 선언하고 1~100까지의 숫자를 추가해보세요.(반복문 사용)
+    let arr1 = [];
+    for (i = 1; i <= 100; i++) {
+      arr1.push(i);
+    }
+    console.log(arr1);
+
+    //10. 비어있는 배열을 선언하고 1~100까지의 숫자중 짝수만 추가해보세요(반복문 사용)
+
+    let arr2 = [];
+    for (let i = 0; i < arr1.length; i++) {
+      if (i % 2 == 0) {
+        arr2.push(i);
+      }
+    }
+    console.log(arr2);
+    //11.함수를 생성하고 함수를 호출하면 '안녕하세요!'라는 alert 창이 출력되도록 작성해 보세요.
+
+    function hi() {
+      const a = prompt("안녕하세요!");
+      let result = a;
+    }
+
+    //12.함수를 호출하면 body 태그에 p태그를 추가하고font색상과 backgrund-color가
+    //변경된 요소가 화면에 출력되는 함수를 작성하세요.
+  </script>
+</html>
