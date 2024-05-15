@@ -7,6 +7,7 @@
   </head>
   <body>
     <button onclick="hi()">click</button>
+    <p></p>
   </body>
   <script>
     //1.변수 두개를 선언하고 각각 초기값을 3,4 로 할당하세요.
@@ -68,5 +69,13 @@
 
     //12.함수를 호출하면 body 태그에 p태그를 추가하고font색상과 backgrund-color가
     //변경된 요소가 화면에 출력되는 함수를 작성하세요.
+    function createEl() {
+      const pTag = document.createElement("p");
+      pTag.style.color = "blue";
+      pTag.style.backgroundColor = "yellow";
+      pTag.innerHTML = "생성된 p 태그입니다.";
+
+      document.querySelector("body").append(pTag);
+    }
   </script>
 </html>
