@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>domTrre</title>
+  </head>
+  <style>
+    ul {
+      border: 3px solid teal;
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      border: 2px solid tomato;
+      background-color: beige;
+      padding: 10px 15px;
+    }
+  </style>
+  <body>
+    <h2 style="color: pink">몰라요!~!~!~!~!~!~!~!~!😣😩😡😭😖🤯👿</h2>
+
+    <input type="text" id="target" name="text1" />
+    <input type="button" value="제출" onclick="process()" />
+    <hr />
+    <div id="content">
+      <h1 id="title-1">과일🥝</h1>
+      <ul id="list-1">
+        <li>사과🍎</li>
+        <li>딸기🍓</li>
+        <li>복숭아🍑</li>
+        <li>포도🍇</li>
+        <li>오렌지🍊</li>
+      </ul>
+      <h1 id="title-2">자동차🚗</h1>
+      <ul id="list-2">
+        <li>아반떼</li>
+        <li>소나타</li>
+        <li>그랜저</li>
+        <li>스타리아</li>
+        <li>포터</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    function process() {
+      //   let obj = document.getElementById("target");
+      //   let obj = document.getElementsByName("text1");
+      //   let obj = document.getElementsByTagName("input")[0];
+      let obj = document.getElementsByTagName("input")[1];
+      console.log(obj);
+    }
+    const ul = document.getElementById("list-1");
+
+    //자식 요소
+    console.log(ul.children[0]);
+    ul.children[4].style.backgroundColor = "yellow";
+    console.log(ul.firstChild);
+    console.log(ul.firstElementChild);
+    console.log(ul.lastElementChild);
+
+    //부모요소
+    ul.parentElement.style.border = "5px solid blue";
+
+    //부모요소&조상 요소
+    console.log(ul.lastElementChild.closest("div#content")); //div찾기
+    console.log(ul.closest("div#content")); //위에거랑 결과같음
+    ul.parentElement.parentElement; //body 찾기
+
+    //형제요소
+    console.log(ul.previousElementSibling);
+    console.log(ul.nextElementSibling);
+  </script>
+</html>

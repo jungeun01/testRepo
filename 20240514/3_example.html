@@ -7,7 +7,6 @@
   </head>
   <body>
     <button onclick="hi()">click</button>
-    <p></p>
   </body>
   <script>
     //1.변수 두개를 선언하고 각각 초기값을 3,4 로 할당하세요.
@@ -22,16 +21,16 @@
     //3.위 문제에서 콘솔창에 출력 할 때 결과가 어떤 연산을 했는지 알  수 있도록
     //결과값 왼쪽에 연산 내용을 표시해보세요.
     //ex)a+b=결과
-    console.log(`${a}+${b}=${a + b}`);
-    console.log(`${a}-${b}=${a - b}`);
-    console.log(`${a}*${b}=${a * b}`);
-    console.log(`${a}/${b}=${a / b}`);
+    console.log(`a+b=${a + b}`);
+    console.log(`a-b=${a - b}`);
+    console.log(`a*b=${a * b}`);
+    console.log(`a/b=${a / b}`);
 
     //4.  1번에서 선언한 변수 두개의 대소 비교를 하여 어떤 변수가 큰지를 alert 창으로 출력할 수 있게 작성해보세요(조건문 사용)
     if (a < b) {
-      alert(`${a}이 ${b}작습니다`);
+      alert(`a가 b보다 작습니다`);
     } else {
-      alert(`${a}이 ${b}큽니다`);
+      alert(`a 가 b 보다 큽니다`);
     }
     //5.비어있는 객체를 하나 생성해보세요.
     let person = {};
@@ -39,7 +38,11 @@
     //각각에  1번 문제에서 만든 변수를 할당하세요
     person["num1"] = a;
     person["num2"] = b;
-    console.log(person);
+
+    // person.num1=a;
+    // person.num2=b; 위에랑 같은방식
+    console.log(person["num1"]);
+    console.log(person["num2"]);
     //8.비어있는 배열을 선언하고 그 배열에 1부터 10까지 숫자를 추가해보세요.
     //(선언 이후에 값을 넣는 방법 사용)
     let arr = [];
@@ -64,7 +67,7 @@
     console.log(arr2);
     //11.함수를 생성하고 함수를 호출하면 '안녕하세요!'라는 alert 창이 출력되도록 작성해 보세요.
     function hi() {
-      alert("안녕하세요");
+      alert("안녕하세요😀~!");
     }
 
     //12.함수를 호출하면 body 태그에 p태그를 추가하고font색상과 backgrund-color가
