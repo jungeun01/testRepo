@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 변경</title>
+  </head>
+  <body>
+    <img
+      id="image"
+      src="../resources/img/고양이.jpg"
+      width="500"
+      height="350"
+    />
+    <button onclick="changeImage()">눌러보세요</button>
+  </body>
+  <script>
+    // let lastIdx = 0;
+    // function changeimge() {
+    //   //사진 5장 정도 준비
+    //   //사진의 경로를 배열에 담는다.
+    //   //클릭할때마다 0~4 의 랜덤숫자를 뽑는다.
+    //   let a = [
+    //     "고양이.jpg",
+    //     "고양이2.jpg",
+    //     "고양이3.png",
+    //     "고양이4.jpg",
+    //     "고양이5.jpeg",
+    //   ];
+
+    //   const img1 = parseInt(Math.random() * 5);
+
+    //   document.querySelector("#image").src = `../resources/img/${a[img1]}`;
+    // }
+    // // function makerand(length){
+    // //     const randNum=(Math.random()*length);
+    // //     return randNum
+
+    // // }
+    // let lastIdx = 0;
+    // function changeImage() {
+    // 사진 5장 정도를 준비
+    // 사진의 경로를 배열에 담는다.
+    let lastIdx = 0;
+    function changeImage() {
+      const imgArr = [
+        "고양이.jpg",
+        "고양이2.jpg",
+        "고양이3.png",
+        "고양이4.jpg",
+        "고양이5.jpeg",
+      ];
+      // 클릭할 때마다 0 ~ 4 의 랜덤 숫자를 뽑는다.
+      const num = makeRandNum(imgArr.length);
+
+      document.querySelector("#image").src = `../resources/img/${imgArr[num]}`;
+    }
+
+    function makeRandNum(length) {
+      while (true) {
+        const randNum = parseInt(Math.random() * length);
+        if (randNum !== lastIdx) {
+          lastIdx = randNum;
+          return randNum;
+        }
+      }
+    }
+  </script>
+</html>

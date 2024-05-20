@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배열 함수 연습</title>
+  </head>
+  <body></body>
+  <script>
+    const students = [
+      { name: "Rooney", score: 5.8 },
+      { name: "Ronaldo", score: 8 },
+      { name: "Kevin", score: 8.5 },
+      { name: "Lampard", score: 7.2 },
+      { name: "Gerald", score: 6.8 },
+      { name: "Torres", score: 7.7 },
+    ];
+    //1.학생 이름을 대문자로 변환
+    let a = students.map(function (v) {
+      return v.name.toUpperCase();
+    });
+    console.log(a);
+    //2.점수가 7점 이상인 학생 필터링
+    let b = students.filter((v) => v.score > 7);
+    console.log(b);
+    //3.모든 학생의 점수 합계 구하기
+    let
+    //4.모든 학생의 평균점수 구하기(반올림)
+
+    const products = [
+      { name: 'Laptop', price: 899.99 },
+      { name: 'Phone', price: 499.99 },
+      { name: 'Tablet', price: 299.99 },
+      { name: 'Monitor', price: 199.99 },
+      { name: 'Keyboard', price: 49.99 },
+      { name: 'Mouse', price: 29.99 },
+    ];
+  </script>
+</html>
