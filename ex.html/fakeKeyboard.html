@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./keyboard.css" />
     <title>fake keyboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
     <div id="wrapper">
-      <h1>Fake Keyboard</h1>
+      <h1>Fake Keyboard <i class="fa-solid fa-keyboard"></i></h1>
+
       <input type="text" id="my-input" />
       <div class="events">
         <div id="keydown" class="event">keydown</div>
@@ -148,6 +156,13 @@
       //   e.preventDefault();
       console.log(`key : ${e.key}, code : ${e.code}`);
       const el = document.querySelector(`#${e.code}`);
+
+      colorArr = [];
+      for (let i = 0; i < 3; i++) {
+        colorArr.push(parseInt(Math.random() * 256));
+      }
+      el.style.setProperty("--main-color", `rgb(${colorArr})`);
+
       keydown.classList.add("check");
       el.classList.add("on");
 
