@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter selector</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    ul {
+      list-style: none;
+      border: 3px solid teal;
+      padding: 0;
+      width: 500px;
+      border-radius: 10px;
+    }
+    li {
+      border: 2px solid tomato;
+      background-color: rgb(245, 245, 231);
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 30px;
+    }
+    td {
+      /* border: 2px solid black; */
+      width: 200px;
+      text-align: center;
+      font-size: 32px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+    </ul>
+    <hr />
+    <!-- <table>
+      <tr>
+        <td>one</td>
+        <td>62만원</td>
+      </tr>
+      <tr>
+        <td>two</td>
+        <td>45만원</td>
+      </tr>
+      <tr>
+        <td>three</td>
+        <td>33만원</td>
+      </tr>
+      <tr>
+        <td>four</td>
+        <td>72만원</td>
+      </tr>
+      <tr>
+        <td>five</td>
+        <td>77만원</td>
+      </tr>
+      <tr>
+        <td>six</td>
+        <td>54만원</td>
+      </tr>
+      <tr>
+        <td>seven</td>
+        <td>61만원</td>
+      </tr>
+      <tr>
+        <td>eight</td>
+        <td>52만원</td>
+      </tr>
+      <tr>
+        <td>nine</td>
+        <td>88만원</td>
+      </tr>
+    </table> -->
+    <!-- <hr /> -->
+    <table border="1">
+      <tr>
+        <td>이름</td>
+        <td>주소</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>대전</td>
+      </tr>
+      <tr>
+        <td>진달래</td>
+        <td>서울</td>
+      </tr>
+      <tr>
+        <td>개나리</td>
+        <td>부산</td>
+      </tr>
+      <tr>
+        <td>무궁화</td>
+        <td>대구</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    //첫번째 요소
+    $("li:first").css("fontSize", "48px");
+    //마지막 요소
+    $("li:last").css("fontSize", "48px");
+    //짝수번째 요소
+    $("li:even").css("backgroundColor", "pink");
+    //홀수번째 요소
+    $("li:odd").css("backgroundColor", "skyblue");
+    //선택 요소중 주어진 index보다 index작은요소
+    $("li:lt(4)").css("color", "red");
+
+    //선택 요소중 주어진 index보다 index 큰 요소(4<)
+    $("li:gt(4)").css("color", "blue");
+    //선택 요소중 주어진 index에 일치하는 index 를 갖는 요소
+    $("li:eq(4)").css("color", "green");
+
+    $("tr:even").css("background", "#9f9f9f");
+    $("tr:odd").css("background", "#f9f9f9");
+    $("tr:first").css({
+      backgroundColor: "black",
+      color: "white",
+    });
+  </script>
+</html>
