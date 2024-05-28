@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부모 요소 확인</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    div {
+      border: 3px solid orange;
+    }
+  </style>
+  <body>
+    <div>
+      <p>무궁화 꽃이 피었습니다🌸</p>
+    </div>
+    <p id="pTag">은주는 예쁘다~~~</p>
+    <div>
+      <p>사뿐히 즈려밟고 가시옵소서</p>
+    </div>
+  </body>
+  <script>
+    //p태그들에 클릭 이벤트를 달아준다.
+    $("p").on("click", function () {
+      //   const index = $(this).index();
+      //선택된 p태그를 가져온다
+      const pTag = $(this);
+
+      //선택된 p태그의 부모요소를 가져온다.
+      let parent = pTag.parent("div");
+      //부모 요소가 div 태그인지 확인한다.
+      let b = parent.prop("tagName");
+      //부모 요소가 div 태그라면 선택된 p 태그의 텍스트를 가져온다.
+      //   console.log(b);
+      if (b) {
+        let a = pTag.text();
+        let new1 = $("<p>").text(a);
+        parent.append(new1);
+        new1.css("color", "red");
+        //새로운 p태그를 생성하여 부모요소에 추가한다.(폰트 색상 변경)
+
+        //부모요소가 div 태그가 아니라면 '작업대상이 아닙니다.' 라는 문구를 출력(alert)
+      } else {
+        alert("작업대상이 아닙니다.");
+      }
+    });
+  </script>
+</html>

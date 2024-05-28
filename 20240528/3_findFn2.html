@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>찾기 함수2</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    .wrapper * {
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 5px;
+      margin: 15px;
+      display: block;
+    }
+    .wrapper div {
+      width: 300px;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      body div
+      <div>
+        div
+        <ul>
+          ul
+          <li>
+            li
+            <span id="span1">span</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        div
+        <ul>
+          ul
+          <li>
+            li
+            <span id="span2">span</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    //#span1 의 바로 위 부모요소 선택
+    // $("#span1").parent().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   //   backgroundColor: "pink",
+    // });
+
+    //span태그를  감싸고 있는 모든 부모의 요소선택/부모,조상중에 div만 선택
+    // $("#span1").parents("div").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    //span태그와 가장 가까이있는 div를 기준으로 나머지 부모 선택
+    // $("#span1").parentsUntil("div").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    //span태그에서 가장가까운 div 찾기
+    // $("#span1").closest("div").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    //자식찾기
+    // $(".wrapper>div").find("li").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // $("#span1").closest(".wrapper").find("#span2").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    // });
+
+    // $("#span2").closest(".wrapper").find("#span1").css({
+    //   color: "red",
+    //   border: "2px solid pink",
+    // });
+    //위아래 같음
+    $("#span2").parents(".wrapper > div").siblings().find("#span1").css({
+      color: "red",
+      border: "2px solid pink",
+    });
+  </script>
+</html>

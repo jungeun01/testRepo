@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조작 관련 함수</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    * {
+      font-size: 32px;
+    }
+    p {
+      cursor: pointer;
+    }
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+  <body>
+    <p>고양이</p>
+    <p>고양이1</p>
+    <p>고양이2</p>
+    <p>고양이3</p>
+    <!-- <p>고양이4</p> -->
+  </body>
+  <script>
+    const imgArr = [
+      "고양이.jpg",
+      "고양이1.webp",
+      "고양이2.jpg",
+      "고양이3.png",
+      //   "고양이4.jpg",
+    ];
+    $("p").on("click", function () {
+      const index = $(this).index();
+      const pTags = $("p");
+      console.log(pTags);
+      //   console.log(index);
+      //요소 내부에 추가
+      const imgTag = `<img src='../resources/img/${imgArr[index]}'/>`;
+      //~에 ~무엇을 ==> append
+      //   $(this).append(imgTag);
+      //----------------------------------------------------------------
+      //~무엇을 ~에 ==>appendTo
+      //   $(imgTag).appendTo(this);
+
+      //----------------------------------------------------------------
+
+      //~에 ~무엇을==>prepend
+      //   $(this).prepend(imgTag);
+
+      //----------------------------------------------------------------
+      //~무엇을 ~에==>prependTo
+      //   $(imgTag).prependTo(this);
+
+      //----------------------------------------------------------------
+      //요소 외부에 추가
+      //   $(this).after(imgTag);
+      //   $(imgTag).insertAfter(this);
+      //   $(this).before(imgTag);
+      $(imgTag).insertBefore(this);
+    });
+  </script>
+</html>

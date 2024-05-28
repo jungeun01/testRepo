@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>찾기 함수</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    .wrapper {
+      width: 500px;
+    }
+    .wrapper * {
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 5px;
+      margin: 15px;
+      display: block;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <ul>
+        ul
+        <li class="start">li class='start</li>
+        <li class="my">li class='my</li>
+        <li>li</li>
+        <li class="my">li class='my</li>
+        <li class="stop">li class='stop</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //start다음부터 선택
+
+    // $("li.start").next().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    //start다음부터 전체다 선택
+
+    // $("li.start").nextAll().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    //start 다음부터stop 사이의 'my' 만 선택
+
+    // $("li.start").nextUntil("li.stop", ".my").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    //stop이전 선택
+
+    // $("li.stop").prev().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    //stop이전 전체 선택
+
+    // $("li.stop").prevAll().css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    //stop이전 start사이의 'my'만 선택
+
+    // $("li.stop").prevUntil("li.start", ".my").css({
+    //   color: "red",
+    //   border: "2px solid red",
+    //   backgroundColor: "pink",
+    // });
+
+    // $('li.start').siblings()
+    //전체 형제요소중에 'my'만 선택
+    // $("li.start")
+    //   .siblings(".my")
+    //   .css({ color: "red", border: "2px solid red", backgroundColor: "pink" });
+
+    //start 와 stop 선택
+    $("li.start").add("li.stop").css({
+      color: "red",
+      border: "2px solid red",
+      backgroundColor: "pink",
+    });
+  </script>
+</html>
