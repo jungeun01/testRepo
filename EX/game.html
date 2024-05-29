@@ -26,10 +26,9 @@
       position: relative;
     }
     #input {
-      width: 180px;
-      height: 45px;
+      width: 200px;
+      height: 50px;
       font-size: 15px;
-      padding: 10px;
       border: none;
       position: absolute;
       left: 50%;
@@ -37,18 +36,19 @@
       transform: translateX(-50%);
     }
     .word {
-      color: #ffffff;
-      font-size: 30px;
-      font-weight: 500;
+      color: #ffff;
+      font-size: 20px;
+      font-weight: 600;
       position: absolute;
     }
     .score {
-      color: #ffffff;
-      font-size: 40px;
+      color: #ffff;
+      font-size: 30px;
+      font-weight: 500;
       position: absolute;
       top: 0;
       right: 0;
-      padding: 15px;
+      padding: 10px;
     }
   </style>
   <body>
@@ -58,17 +58,15 @@
     <div class="score">총점 : 0</div>
   </body>
   <script>
-    const words = ["DW", "DOM", "BOM", "window"];
+    const words = ["DW", "BOM", "DOM", "window"];
     const input = document.querySelector("#input");
     const score1 = document.querySelector(".score");
+    const container = document.querySelector("#container");
+    const maxPositionX = container.offsetWidht - 90;
+    const maxPositionY = container.offsetHieight - 100;
     let count = 0;
     let score = 0;
-    //단어들이 뿌려질 container의 범위 파악
-    const container = document.querySelector("#container");
-    const maxPositionX = container.offsetwidth - 90;
-    const maxPositionY = container.offsetHeight - 100;
 
-    //단어를생성하고 화면에 출력
     function init() {
       words.forEach(function (el) {
         const span = document.createElement("span");
@@ -80,41 +78,31 @@
         container.append(span);
       });
     }
-    //---------------------------------------
+
     input.addEventListener("change", function () {
       const word = document.querySelector(`span[id=${input.value}]`);
       if (word != null) {
         word.remove();
         score += 100;
-        score1.innerHTML = `총점 : ${score}`;
+        score1.innerHTML = `총점${score}`;
         count++;
 
         if (count == words.length) {
           alert("clear");
           if (confirm("재도전?")) {
-            window.location.reload();
+            window.localStorage.reload();
           }
         }
       }
       input.value = "";
     });
+
     function wordrain() {
       const words = document.querySelectorAll(".word");
       setInterval(function () {
-        words.forEach(function (el) {
-          const rect = el.getBoundingClientRect();
-          el.style.top = `${rect.top - 75}px`;
-          if (
-            el.getBoundingClientRect().bottom >
-            container.getBoundingClientRect().bottom -
-              parseInt(getComputedStyle(input).height.split("px")[0])
-          ) {
-            el.remove();
-          }
-        });
-      }, 1000);
+        words.forEach(function (el) {});
+      });
     }
     init();
-    wordrain();
   </script>
 </html>
