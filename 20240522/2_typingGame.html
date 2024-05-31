@@ -95,7 +95,7 @@
 
         // span 태그에 클래스를 추가한다.(word)
         span.classList.add("word");
-
+        
         // span 태그에 아이디 속성을 추가한다.
         span.setAttribute("id", el);
 
@@ -144,7 +144,7 @@
         words.forEach(function (el) {
           const rectSize = el.getBoundingClientRect();
           el.style.top = `${rectSize.top - 75}px`;
-
+          
           console.log(getComputedStyle(input).height.split("px")[0]);
           if (
             el.getBoundingClientRect().bottom >

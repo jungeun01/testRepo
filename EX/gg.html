@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("../resources/img/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <input id="input" type="text" placeholder="단어를 입력하세요." />
+    </div>
+    <div class="score">총점 : 0</div>
+  </body>
+  <script>
+    const words = ["div", "p", "dw", "window"];
+    const input = document.querySelector("#input");
+    const score1 = document.querySelector(".score");
+    let count = 0;
+    let score = 0;
+    const container = document.querySelector("#container");
+    const maxPositionX = container.offsetWidth - 90;
+    const maxPositionY = container.offsetHeight - 100;
+
+    function init() {
+      words.forEach(function (el) {
+        const span = document.createElement("span");
+        span.innerHTML = el;
+        span.classList.add("word");
+        spna.
+      });
+    }
+  </script>
+</html>

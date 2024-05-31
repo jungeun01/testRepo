@@ -3,6 +3,7 @@ import {
   getFirestore,
   getDocs,
   collection,
+  setDoc,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -17,11 +18,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getMembers() {
-  const collect = await collection(db, "member");
+async function getDatas(collectionName) {
+  const collect = await collection(db, collectionName);
   const snapshot = await getDocs(collect);
 
   return snapshot;
 }
-
-export { db, getMembers };
+async function addDatas(collectionName, dataObj) {
+  //문서 ID 수동
+  const saveDoc = await doc(db, collectionName, 2);
+  const saveResult = await setDoc(saveDoc, Object);
+}
+export { db, getDatas };
