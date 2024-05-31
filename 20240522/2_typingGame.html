@@ -78,9 +78,9 @@
 
     // 단어들이 뿌려질 container의 범위를 파악한다.
     const container = document.querySelector("#container");
-    console.log(
-      `offsetWidth: ${container.offsetWidth}, offsetHeight: ${container.offsetHeight}`
-    );
+    // console.log(
+    //   `offsetWidth: ${container.offsetWidth}, offsetHeight: ${container.offsetHeight}`
+    // );
     const maxPositionX = container.offsetWidth - 90;
     const maxPositionY = container.offsetHeight - 100;
 
@@ -95,7 +95,7 @@
 
         // span 태그에 클래스를 추가한다.(word)
         span.classList.add("word");
-        
+
         // span 태그에 아이디 속성을 추가한다.
         span.setAttribute("id", el);
 
@@ -144,7 +144,7 @@
         words.forEach(function (el) {
           const rectSize = el.getBoundingClientRect();
           el.style.top = `${rectSize.top - 75}px`;
-          
+
           console.log(getComputedStyle(input).height.split("px")[0]);
           if (
             el.getBoundingClientRect().bottom >
