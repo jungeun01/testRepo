@@ -1,5 +1,7 @@
 html {
   font-family: pretendard;
+  word-break: keep-all;
+  /*word-break:keep-all=한글단어 단위로 개행*/
 }
 body {
   background-color: #000;
@@ -98,4 +100,59 @@ header {
   color: #fff;
   background-color: transparent;
   cursor: pointer;
+}
+.plans-title,
+.benefits-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 32px 0;
+}
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 120px;
+}
+.card {
+  border: 2px solid #fff;
+  border-radius: 16px;
+  padding: 56px 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+.card.event {
+  border-color: #7f5fff;
+}
+.card.event h3 {
+  color: #7f5fff;
+}
+.card.event .event-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #000;
+  background-color: #7f5fff;
+}
+.card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.benefits .wide {
+  /* grid-column-start: 1;
+  grid-column-end: 3;
+  이거의 축약형은 밑에사용한거 */
+  grid-column: 1/3;
 }

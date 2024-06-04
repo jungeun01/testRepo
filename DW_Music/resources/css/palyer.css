@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: pretendard;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  font-size: 16px;
+  /* background-image: url("../../../resources/img/고양이4.jpg"); */
+}
+.player {
+  backdrop-filter: blur(15px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.progress-bar {
+  background-color: #4d4d54;
+  width: 100%;
+  height: 6px;
+}
+.progress {
+  background-color: #7000ff;
+  width: 70%;
+  height: 100%;
+}
+.info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.info,
+.time {
+  flex-basis: 300px;
+}
+.current {
+  border-radius: 15px;
+}
+.player-main {
+  background-color: rgba(48, 48, 55, 0.7);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  color: #d9d9d9;
+}
+.artist {
+  color: #8c8993;
+}
+.time {
+  color: #8c8993;
+  text-align: right;
+}

@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: pretendard;
+  word-break: keep-all;
+  font-size: 16px;
+}
+body {
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+}
+.sidebar {
+  width: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: #161519;
+  color: #8c8c8c;
+  padding: 8px;
+}
+.logo {
+  font-weight: 500;
+  color: #fff;
+}
+.logoBi {
+  color: purple;
+}
+.menu-itmes {
+  margin-bottom: 48px;
+  /* padding: 0; */
+  margin: 0;
+  list-style-type: none;
+}
+.menu-itme {
+  display: flex;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 8px;
+}
+.menu-itme.a {
+  background-color: rgb(158, 185, 236);
+}
