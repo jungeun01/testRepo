@@ -4,7 +4,7 @@
 html {
   font-family: pretendard;
   word-break: keep-all;
-  font-size: 16px;
+  font-size: 15px;
 }
 body {
   margin: 0;
@@ -12,15 +12,14 @@ body {
   color: #fff;
 }
 .sidebar {
+  background-color: #161519;
+  color: #8c8993;
   width: 240px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  padding: 0;
-  background-color: #161519;
-  color: #8c8c8c;
-  padding: 8px;
+  padding: 15px;
 }
 .logo {
   font-weight: 500;
@@ -29,18 +28,119 @@ body {
 .logoBi {
   color: purple;
 }
-.menu-itmes {
-  margin-bottom: 48px;
-  /* padding: 0; */
-  margin: 0;
+.menu-items {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 45px;
 }
-.menu-itme {
+.menu-item {
+  padding: 8% 24px;
   display: flex;
   align-items: center;
-  padding: 8px 24px;
   gap: 8px;
 }
-.menu-itme.a {
-  background-color: rgb(158, 185, 236);
+.menu-item.music {
+  background-color: rgba(105, 187, 255, 0.2);
+  color: #fff;
+}
+.menu-item .home {
+  text-decoration: none;
+  color: #8c8993;
+}
+.menu-item:hover {
+  cursor: pointer;
+}
+main {
+  margin-left: 240px;
+  padding-bottom: 100px;
+}
+/*  메거진 */
+section {
+  max-width: 1120px;
+  width: 100%;
+  margin: 80px auto;
+  padding: 0 35px;
+}
+.featured {
+  display: flex;
+  gap: 40px;
+}
+.featured-thumb {
+  border-radius: 25px;
+}
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.featured-tag {
+  background-color: #18181d;
+  border-radius: 15px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #56566e;
+  width: fit-content;
+}
+.featured-title {
+  font-weight: 700;
+  font-size: 40px;
+  color: #d9d9d9;
+  margin: 0;
+}
+.featured-description {
+  color: #56566e;
+  margin: 0;
+}
+.section-title {
+  font-weight: 700;
+  font-size: 30px;
+  margin: 40px 0;
+}
+.playlists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.playlist {
+  flex-basis: 22%;
+}
+.playlist-thumb {
+  border-radius: 25px;
+  width: 100%;
+}
+.playlist-title {
+  font-weight: 700;
+  font-size: 32px;
+  margin: 16px 0;
+}
+.playlist-artist {
+  color: #868686;
+  margin: 0;
+}
+.artists {
+  display: flex;
+  gap: 32px;
+}
+.artist {
+  text-align: center;
+}
+.artist-profile {
+  width: 100%;
+}
+.artist-name {
+  font-weight: 500;
+  font-size: 24px;
+  gap: 40px;
+}
+.stations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.station {
+  border-radius: 16px;
+  width: 100%;
 }

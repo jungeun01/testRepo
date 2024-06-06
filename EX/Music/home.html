@@ -13,34 +13,172 @@
   <body>
     <!-- 사이드바 -->
     <div class="sidebar">
-      <p class="logo"><span class="logoBi">DW</span> Music</p>
+      <p class="logo"><span class="logoBi">DW</span>Music</p>
       <ul class="menu-items">
-        <li class="menu-itme">
-          <img src="../../DW_Music/resources/img/icon_home.svg" alt="" /> 뮤직
-          홈
+        <li class="menu-item">
+          <img src="../../DW_Music/resources/img/icon_home.svg" alt="" /><a
+            class="home"
+            href="#"
+            >뮤직 홈</a
+          >
         </li>
-        <li class="menu-itme">
-          <img src="../../DW_Music/resources/img/icon_album.svg" alt="" /> 추천
+
+        <li class="menu-item">
+          <img src="../../DW_Music/resources/img/icon_album.svg" alt="" />추천
           앨범
         </li>
-        <li class="menu-itme a">
-          <img src="../../DW_Music/resources/img/icon_playlist.svg" alt="" />
-          뮤직 매거진
+
+        <li class="menu-item music">
+          <img
+            src="../../DW_Music/resources/img/icon_playlist.svg"
+            alt=""
+          />뮤직 매거진
         </li>
-        <li class="menu-itme">
-          <img src="../../DW_Music/resources/img/icon_genre.svg" alt="" /> 장르
+
+        <li class="menu-item">
+          <img src="../../DW_Music/resources/img/icon_genre.svg" alt="" />장르
           별 보기
         </li>
       </ul>
       <ul class="menu-items">
-        <li class="menu-itme">혼자 보내는 조용한...</li>
-        <li class="menu-itme">꼭 들어야 할 해외...</li>
-        <li class="menu-itme">90년대 힙합 개론</li>
-        <li class="menu-itme">스타벅스 음악 024</li>
-        <li class="menu-itme">+ New Playlist</li>
+        <li class="menu-item">혼자 보내는 중요한...</li>
+        <li class="menu-item">꼭 들어야 할 해외...</li>
+        <li class="menu-item">90년대 힙합 개론</li>
+        <li class="menu-item">스타벅스 음악 2024</li>
+        <li class="menu-item">+ New Playlist</li>
       </ul>
     </div>
     <!-- 메거진  -->
+    <main>
+      <section>
+        <div class="featured">
+          <img
+            class="featured-thumb"
+            src="../../DW_Music/resources/img/img_main_banner.png"
+            alt=""
+          />
+          <div class="featured-content">
+            <div class="featured-tag">뮤직 매거진</div>
+            <h2 class="featured-title">
+              여행에서 <br />
+              다시 일상으로
+            </h2>
+            <p class="featured-description">
+              비행기 표를 예매하고 짐을 챙기는 순간부터 여행이 시작된 것
+              같은기분이죠. 화려한 여행지의 추억을 뒤로하고 다시 일상으로
+              돌아온사람들을 위한 파워풀한 음악을 준비했습니다. 여행에서
+              재충전한 에너지를 모아서 힘찬 한 주를 시작해보는건 어떨까요?
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">이달의 플레이리스트</h2>
+        <div class="playlists" id="playlists">
+          <!-- <div class="playlist">
+            <img
+              class="playlist-thumb"
+              src="../../DW_Music/resources/img/img_playlist_1.png"
+              alt=""
+            />
+            <div class="playlist-title">여행을 떠나요</div>
+            <div class="playlist-artist">DW Music</div>
+          </div> -->
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">추천 아티스트</h2>
+        <div class="artists" id="artists">
+          <!-- <div class="artist">
+            <img
+              class="artist-profile"
+              src="../../DW_Music/resources/img/img_artist_1.png"
+              alt=""
+            />
+            <div class="artist-name">Meon 5</div>
+          </div> -->
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">느낌 별 스테이션</h2>
+        <div class="stations" id="stations">
+          <!-- <img
+            class="station"
+            src="../../DW_Music/resources/img/img_station_1.png"
+            alt=""
+          /> -->
+        </div>
+      </section>
+      <section></section>
+    </main>
+
     <!-- 플레이어 -->
   </body>
+  <script>
+    const playlist = document.getElementById("playlists");
+    const palylistArr = [
+      { title: "여행을 떠나요" },
+      { title: "금요일 저녁의 카페에서" },
+      { title: "이제 집중할 시간" },
+      { title: "몰디브 한" },
+      { title: "K-POP믹스" },
+      { title: "공부를 위한 클래식" },
+      { title: "한국 시티팝" },
+      { title: "편안하게 느긋하게" },
+      { title: "고요한 밤을 위한" },
+    ];
+    palylistArr.forEach((el, idx) =>
+      playlist.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="playlist">
+          <img
+            class="playlist-thumb"
+            src="../../DW_Music/resources/img/img_playlist_${idx + 1}.png"
+            alt=""
+          />
+          <div class="playlist-title">${el.title}</div>
+          <div class="playlist-artist">DW Music</div>
+        </div>
+    `
+      )
+    );
+    const artist = document.getElementById("artists");
+    const artistArr = [
+      { name: "Meon 5" },
+      { name: "곤잘레스" },
+      { name: "케이시 킹" },
+      { name: "Frake" },
+      { name: "체인스모킹" },
+    ];
+    artistArr.forEach((el, idx) => {
+      artist.insertAdjacentHTML(
+        "beforeend",
+        `
+      <div class="artists" id="artists">
+          <div class="artist">
+            <img
+              class="artist-profile"
+              src="../../DW_Music/resources/img/img_artist_${idx + 1}.png"
+              alt=""
+            />
+            <div class="artist-name">${el.name}</div>
+          </div>
+      `
+      );
+    });
+
+    const stations = document.getElementById("stations");
+    for (let i = 1; i < 10; i++) {
+      stations.insertAdjacentHTML(
+        "beforeend",
+        `<img
+            class="station"
+            src="../../DW_Music/resources/img/img_station_${i}.png"
+            alt=""
+          />
+  `
+      );
+    }
+  </script>
 </html>
