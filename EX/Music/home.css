@@ -144,3 +144,55 @@ section {
   border-radius: 16px;
   width: 100%;
 }
+/* player */
+.player {
+  backdrop-filter: blur(15px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.progress-bar {
+  background-color: #4d4d53;
+  width: 100%;
+  height: 6px;
+}
+.progress {
+  background-color: #7000ff;
+  width: 70%;
+  height: 100%;
+}
+.current {
+  border-radius: 16px;
+}
+.info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.musicplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+}
+.player-main {
+  display: flex;
+  justify-content: space-between;
+  background-color: #18181d;
+  align-items: center;
+}
+.time {
+  text-align: right;
+  color: #8c8993;
+}
+.current {
+  padding: 10px 15px;
+}
+.artist1 {
+  color: #8c8993;
+}
+/* .info,
+.time {
+  flex-basis: 300px;
+} */
