@@ -32,7 +32,13 @@
       width: 30%;
     }
     .selected {
-      background-color: yellow;
+      background-color: pink;
+    }
+    .active {
+      display: inline-block;
+    }
+    .noneActive {
+      display: none;
     }
   </style>
   <body>
@@ -40,7 +46,8 @@
       <div>
         <div>
           <button id="saveBtn">회원정보저장</button>
-          <button id="updateBtn">회원정보수정</button>
+          <button id="updateBtn" class="active">회원정보수정</button>
+          <button id="saveUpdateBtn" class="noneActive">수정정보저장</button>
           <button id="deleteBtn">회원정보삭제</button>
         </div>
 
@@ -96,11 +103,11 @@
           "beforeend",
           `
                 <tr data-id=${doc.id}>
-                    <td>${name}</td>
-                    <td>${gender}</td>
-                    <td>${age}</td>
-                    <td>${email}</td>
-                    <td>${tel}</td>
+                    <td class='name'>${name}</td>
+                    <td class='gender'>${gender}</td>
+                    <td class='age'>${age}</td>
+                    <td class='email'>${email}</td>
+                    <td class='tel'>${tel}</td>
                 </tr>
             `
         );
@@ -135,11 +142,11 @@
         `
 
                 <tr data-id=${result.id}>
-                    <td>${name}</td>
-                    <td>${gender}</td>
-                    <td>${age}</td>
-                    <td>${email}</td>
-                    <td>${tel}</td>
+                    <td class='name'>${name}</td>
+                    <td class='gender'>${gender}</td>
+                    <td class='age'>${age}</td>
+                    <td class='email'>${email}</td>
+                    <td class='tel'>${tel}</td>
                 </tr>
       `
       );
@@ -159,6 +166,46 @@
           return false;
         }
       });
+    });
+    // 회원 정보 수정
+    const updateBtn = document.getElementById("updateBtn");
+    const saveUpdateBtn = document.getElementById("saveUpdateBtn");
+
+    updateBtn.addEventListener("click", function () {
+      saveUpdateBtn.classList.remove("noneActive");
+      saveUpdateBtn.classList.add("active");
+      updateBtn.classList.remove("active");
+      updateBtn.classList.add("noneActive");
+
+      const selectedTr = document.querySelector(".selected");
+      const trChildren = [...selectedTr.children];
+      trChildren.forEach((td) => {
+        td.innerHTML = `<input type="text" value="${td.innerText}" />`;
+        td.addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
+      });
+    });
+    saveUpdateBtn.addEventListener("click", function () {
+      saveUpdateBtn.classList.remove("active");
+      saveUpdateBtn.classList.add("noneActive");
+      updateBtn.classList.remove("noneActive");
+      updateBtn.classList.add("active");
+
+      const selectedTr = document.querySelector(".selected");
+      const trChildren = [...selectedTr.children];
+      let newTdStr = "";
+      const updateObj = {};
+      trChildren.forEach((td) => {
+        const className = td.classList.value;
+        const value = td.firstElementChild.value;
+        newTdStr += `<td class='${className}'>${value}</td>`;
+        updateObj[className] = value;
+      });
+      selectedTr.innerHTML = newTdStr;
+
+      const docId = selectedTr.getAttribute("data-id");
+      updateDatas("member", docId, updateObj);
     });
   </script>
 </html>
