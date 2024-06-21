@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #copyText {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <p id="copyText">주소복사</p>
+
+    <script src="script.js"></script>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const copyText = document.getElementById("copyText");
+
+      copyText.addEventListener("click", function () {
+        const text = copyText.innerText;
+        copyToClipboard(text);
+      });
+
+      function copyToClipboard(text) {
+        if (navigator.clipboard) {
+          navigator.clipboard
+            .writeText(text)
+            .then(function () {
+              console.log("텍스트가 클립보드에 복사되었습니다.");
+            })
+            .catch(function (err) {
+              console.error("텍스트 복사 실패:", err);
+            });
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand("copy");
+            console.log("텍스트가 클립보드에 복사되었습니다.");
+          } catch (err) {
+            console.error("텍스트 복사 실패:", err);
+          }
+          document.body.removeChild(textarea);
+        }
+      }
+    });
+  </script>
+</html>
