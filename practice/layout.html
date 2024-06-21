@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #one {
+      background-color: yellow;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #two {
+      background-color: aqua;
+      width: 400px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #three {
+      background-color: orange;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #four {
+      background-color: red;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <body>
+    <div id="one">
+      <div id="two">
+        <div id="three">
+          <div id="four">
+            <span id="span">가운데 정렬</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let arr = [1, 2, 3, 4, 5];
+    let obj = {
+      name: "서정은",
+      age: 24,
+      gender: "female",
+      boyFriend: "김진용",
+      inputValue: "inputValue",
+    };
+    console.log(arr);
+    console.log(arr[2]);
+    console.log(arr.length);
+    console.log(obj.name);
+    console.log(obj["name"]);
+
+    const inputValue = prompt("가져올 프로퍼티 명을 입력해주세요.");
+    // console.log(inputValue);
+    // if (inputValue == "name") {
+    //   console.log(obj.name);
+    // }else if(inputValue == "gender") {
+    //     console.log(obj.gender);
+    // }
+    const objValue = obj[inputValue];
+    const spanTag = document.getElementById("span");
+    spanTag.innerHTML = `<span>${objValue}</span>`;
+    // for (let i = 0; i < arr.length; i++) {
+    //   console.log(arr[i]);
+    // }
+
+    arr.forEach(function (el, t, array) {
+      console.log(el, t, array);
+    });
+    // [2, 4, 6, 8, 10]
+    // let doubleArr = [];
+    // for (let i = 0; i < arr.length; i++) {
+    //   doubleArr.push(arr[i] * 2);
+    // }
+    const doubleArr = arr.map(function (el) {
+      return el * 2;
+    });
+    console.log(doubleArr);
+  </script>
+</html>
