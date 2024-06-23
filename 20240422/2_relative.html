@@ -6,6 +6,9 @@
     <title>relative</title>
   </head>
   <style>
+    p {
+      margin: 0;
+    }
     #one {
       background-color: aquamarine;
       width: 300px;
@@ -20,17 +23,28 @@
       height: 100px;
       position: relative;
       left: 100px;
-      top: 100px;
+      top: 0;
     }
     #three {
       background-color: blueviolet;
       width: 300px;
       height: 100px;
+      position: absolute;
+      top: 0;
+      left: 100px;
+    }
+    #four {
+      background-color: yellow;
+      width: 600px;
+      height: 200px;
+      position: absolute;
     }
   </style>
   <body>
     <p id="one">block #1</p>
     <div id="two">block #2<br />position:relative;</div>
-    <p id="three">block #3</p>
+    <div id="four">
+      <p id="three">block #3</p>
+    </div>
   </body>
 </html>
