@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼으로 메뉴 보이게 하기</title>
+    <link rel="stylesheet" href="메뉴보기.css"/>
+  </head>
+  <body>
+    
+    <button class="menu-btn">메뉴보기</button>
+    <div class="menu">
+      <div class="close">X</div>
+      <ul>
+        <li>
+         
+          메뉴2
+</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const btn = document.querySelector('button');
+    const menu = document.querySelector('.menu');
+
+    btn.addEventListener('click', function () {
+      menu.classList.add('show-menus');
+    });
+
+    const closeEl = document.querySelector('.close');
+    closeEl.addEventListener('click', function () {
+      menu.classList.remove('show-menus');
+    });
+  </script>
+</html>

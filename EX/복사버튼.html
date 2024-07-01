@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" value="복사할 텍스트" id="textToCopy" />
+    <button id="copyButton">복사</button>
+  </body>
+  <script>
+    document
+      .getElementById("copyButton")
+      .addEventListener("click", function () {
+        const textToCopy = document.getElementById("textToCopy").value;
+        copyToClipboard(textToCopy);
+      });
+
+    function copyToClipboard(text) {
+      // Clipboard API 사용
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            console.log("텍스트가 클립보드에 복사되었습니다.");
+          })
+          .catch(function (err) {
+            console.error("텍스트 복사 실패:", err);
+          });
+      } else {
+        // Clipboard API가 지원되지 않는 경우
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          console.log("텍스트가 클립보드에 복사되었습니다.");
+        } catch (err) {
+          console.error("텍스트 복사 실패:", err);
+        }
+        document.body.removeChild(textarea);
+      }
+    }
+  </script>
+</html>
