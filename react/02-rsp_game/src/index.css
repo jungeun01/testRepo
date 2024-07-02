@@ -1,5 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  color: #fff;
-  background-color: #4a249d;
+  /* color: #fff; */
+  background-color: #40089a;
 }

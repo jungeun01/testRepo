@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 20px auto;
+}
+.App-color h1 {
+  font-size: 35px;
+  font-weight: 900;
+}
+.App-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+.App-color img {
+  background-color: #f4f7fb;
+  padding: 15px;
+  border-radius: 50px;
+}
+.App-m {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.App-line {
+  border: 1px solid black;
+}
