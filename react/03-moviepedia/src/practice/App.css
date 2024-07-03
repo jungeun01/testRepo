@@ -1,0 +1,52 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.App .App-nav,
+.App .App-footer {
+  flex: none;
+}
+.App .App-container {
+  flex: 1 1;
+}
+.App-nav-container,
+.App-container,
+.App-footer-container {
+  width: 100%;
+  max-width: 860px;
+  margin: auto;
+}
+
+.App-nav {
+  background-color: #fff;
+  height: 65px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.App-nav-container {
+  display: flex;
+  align-items: center;
+}
+.App-container {
+  padding: 50px 21px;
+}
+.App-ReviewForm {
+  padding: 30px;
+  background-image: url("../assets/ticket.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  border: 6px;
+  filter: drop-shadow(0 0 11px rgba(105, 105, 105, 0.2));
+}
+
+/* footer */
+.App-footer {
+  background-color: #000;
+}
+.App-footer-container {
+  padding: 30px;
+  color: #fff;
+  text-align: right;
+}
