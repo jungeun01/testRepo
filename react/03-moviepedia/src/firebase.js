@@ -113,19 +113,20 @@ async function addDatas(collectionName, dataObj) {
   } catch (error) {
     return false;
   }
-
-  async function uploadImage(path, imgFile) {
-    // 스토리지 객체 가져오기
-    const storage = getStorage();
-    // 저장할 이미지 객체 생성
-    const imageRef = ref(storage, path);
-    // File 객체를 스토리지에 저장
-    await uploadBytes(imageRef, imgFile);
-    // 저장한 File 의 url 가져오기
-    const url = await getDownloadURL(imageRef);
-    return url;
-  }
 }
+
+async function uploadImage(path, imgFile) {
+  // 스토리지 객체 가져오기
+  const storage = getStorage();
+  // 저장할 이미지 객체 생성
+  const imageRef = ref(storage, path);
+  // File 객체를 스토리지에 저장
+  await uploadBytes(imageRef, imgFile);
+  // 저장한 File 의 url 가져오기
+  const url = await getDownloadURL(imageRef);
+  return url;
+}
+
 async function getLastNum(collectionName, field) {
   const q = query(
     collection(db, collectionName),
@@ -143,9 +144,9 @@ async function deleteDatas(collectionName, docId, imgUrl) {
 
   try {
     //  2. 스토리지에서 이미지 삭제
-
     const deleteRef = ref(storage, imgUrl);
     await deleteObject(deleteRef);
+
     //  3. 컬렉션에서 문서 삭제
     const docRef = await doc(db, collectionName, docId);
     await deleteDoc(docRef);
@@ -155,13 +156,38 @@ async function deleteDatas(collectionName, docId, imgUrl) {
   }
 }
 
-async function updateDatas(collectionName, docId, updateInfoObj) {
-  // doc(db,컬렉션명, 문서ID);
-  // getDocs(문서레퍼런스);
-  // updateDoc(문서데이터, 수정할 정보객체);
+async function updateDatas(collectionName, dataObj, docId) {
+  // console.log(imgUrl);
+  console.log(dataObj.imgUrl);
   const docRef = await doc(db, collectionName, docId);
-  // const docData = await getDoc(docRef);
-  await updateDoc(docRef, updateInfoObj);
+  //  수정할 데이터 양식 생성=> title, content, rating,  updatedAt,imgUrl
+  const time = new Date().getTime();
+  dataObj.updateAt = time;
+  // 사진 파일이 수정되면 => 기존 사진 삭제 => 새로운 사진 추가 =>url 받아와서imgUrl 값 셋팅
+  if (dataObj.imgUrl !== null) {
+    //기존 사진 url 가져오기
+    const docSnap = await getDoc(docRef);
+    const prevImgUrl = docSnap.data().imgUrl;
+
+    // 스토리지에서 기존사진 삭제
+    const storage = getStorage();
+    const deleteRef = ref(storage, prevImgUrl);
+    await deleteObject(deleteRef);
+
+    // 새로운 사진추가
+    const uuid = crypto.randomUUID();
+    const path = `movie/${uuid}`;
+    const url = await uploadImage(path, dataObj.imgUrl);
+    dataObj.imgUrl = url;
+  } else {
+    // imgUrl 프로퍼티 삭제
+    delete dataObj["imgUrl"];
+  }
+  // 사진파일이 수정되지 않으면 => 변경데이터만 업데이트
+  await updateDoc(docRef, dataObj);
+  const updatedData = await getDoc(docRef); //getDocs().docs.map(doc=>{})
+  const resultDate = { docId: updatedData.id, ...updatedData.data() };
+  return resultDate;
 }
 
 export {
