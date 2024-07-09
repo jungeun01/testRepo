@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./ColorSurvey.module.css";
 
-function ColorSurvey({ Item }) {
-  const { id, mbti, colorCode } = Item;
+function ColorSurvey({ mbtiItem }) {
+  const { id, mbti, colorCode } = mbtiItem;
   return (
     <div className={styles.colorSurvey}>
       <div className={styles.id}>{id}</div>

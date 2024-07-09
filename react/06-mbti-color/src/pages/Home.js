@@ -27,8 +27,8 @@ function Home(props) {
           + 새 컬러 등록하기
         </Link>
         <ul className={styles.items}>
-          {mockItem.map((Item) => {
-            return <ColorSurvey key={Item.id} Item={Item} />;
+          {mockItem.map((mbtiItem) => {
+            return <ColorSurvey key={mbtiItem.id} mbtiItem={mbtiItem} />;
           })}
         </ul>
       </main>
