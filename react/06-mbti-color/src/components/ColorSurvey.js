@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ColorSurvey.module.css";
 
 function ColorSurvey({ mbtiItem }) {
-  const { id, mbti, colorCode } = mbtiItem;
+  const { id, mbti, colorCode } = mbtiItem; //객체를 구조분해
   return (
     <div className={styles.colorSurvey}>
       <div className={styles.id}>{id}</div>

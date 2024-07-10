@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import ColorSurvey from "./../components/ColorSurvey";
 import mockItem from "../lib/mock.json";
+import { getAllDatas } from "../lib/firebase";
 
 function Home(props) {
-  console.log(mockItem);
+  // console.log(mockItem);
+  const [items, setItems] = useState([]);
+
+  const handleLoad = async () => {
+    // 파이어베이스에서 데이터 가져오기
+    const resultData = await getAllDatas("mbtiColor", "id");
+
+    // items state에 셋팅
+    setItems(resultData);
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.headerContainer}>
@@ -27,8 +42,8 @@ function Home(props) {
           + 새 컬러 등록하기
         </Link>
         <ul className={styles.items}>
-          {mockItem.map((mbtiItem) => {
-            return <ColorSurvey key={mbtiItem.id} mbtiItem={mbtiItem} />;
+          {items.map((mbtiDate) => {
+            return <ColorSurvey key={mbtiDate.id} mbtiItem={mbtiDate} />;
           })}
         </ul>
       </main>
