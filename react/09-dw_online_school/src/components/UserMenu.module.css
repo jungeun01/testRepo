@@ -1,0 +1,47 @@
+.userMenu {
+  position: relative;
+  /* display: flex;
+  flex-direction: column;
+  gap: 30px; */
+}
+.iconButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.userMenu,
+.iconButton,
+.iconButton img {
+  width: 30px;
+  height: 30px;
+}
+ul.popup {
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  width: 120px;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  list-style: none;
+  position: absolute;
+  right: -10px;
+  top: calc(100% + 25px);
+  box-shadow: var(--box-shadow);
+  border-radius: 5px 0 5px 5px;
+}
+ul.popup li {
+  font-family: var(--noto-sans);
+  padding: 15px 19px;
+}
+ul.popup li:hover {
+  background-color: #f4f4f4;
+}
+ul.popup li.disabled {
+  background-color: #fff;
+  color: #c4c4c4;
+  user-select: none; /*선택 못하게 하는거  */
+}
+.userMenu ul.popup a:hover {
+  text-decoration: none;
+}

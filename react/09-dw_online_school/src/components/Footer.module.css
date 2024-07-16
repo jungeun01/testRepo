@@ -1,0 +1,44 @@
+.footer {
+  color: #878787;
+  background-color: #494949;
+  padding: 20px 0 53px;
+}
+
+.links {
+  color: #c4c4c4;
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 0;
+}
+.info {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  font-family: "RixInooAriDuriR";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.logo > span {
+  background-color: #878787;
+  color: #515151;
+  margin-right: 5px;
+}
+.sns {
+  display: flex;
+  gap: 8px;
+}
