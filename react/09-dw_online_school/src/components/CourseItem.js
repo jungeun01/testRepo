@@ -7,7 +7,7 @@ import getCourseColor from "../utils/getCourseColor";
 
 const diffArr = ["입문", "초급", "중급", "고급"];
 function CourseItem({ item }) {
-  const { title, summary, language, difficulty, code, photoUrl } = item;
+  const { title, summary, language, difficulty, code, photoUrl, slug } = item;
   const courseColor = getCourseColor(code);
   const thumbStyle = {
     borderColor: courseColor,
@@ -20,7 +20,9 @@ function CourseItem({ item }) {
       </div>
       <div className={styles.content}>
         <h2 className={styles.title}>
-          <Link>{title}</Link>
+          <Link to={`/courses/${slug}`} state={{ item }}>
+            {title}
+          </Link>
         </h2>
         <p className={styles.description}>{summary}</p>
         <div>

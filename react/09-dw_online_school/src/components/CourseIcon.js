@@ -49,7 +49,7 @@ const ICONS = {
   "web-publishing": webPublishing,
 };
 
-function CourseIcon({ className, photoUrl }) {
+function CourseIcon({ className, photoUrl = "python" }) {
   return (
     <img className={cn(styles.courseIcon, className)} src={ICONS[photoUrl]} />
   );
