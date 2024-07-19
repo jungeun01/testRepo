@@ -70,7 +70,7 @@ function Login(props) {
       alert(message);
       // 로그인 성공후 메인페이지로 이동 후 replace 사용하여 뒤로 가기했을때 다시 로그인
       // 페이지로 이동못하게 넣어준다.
-      navigate(state ? state : { replace: true });
+      navigate(state ? state : "/", { replace: true });
     }
   };
 
