@@ -1,0 +1,50 @@
+.header {
+  padding: 39px 0 33px;
+  background-color: #fff;
+}
+.count {
+  margin: 0 0 22px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #878787;
+  padding: 0 30px;
+}
+.question {
+  padding: 0 30px;
+}
+.questionInfo {
+  display: flex;
+  /* justify-content: space-between; */
+}
+.questionInfo .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.questionInfo .author {
+  flex: none;
+}
+.questionInfo .title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #494949;
+}
+.questionInfo .title .count {
+  margin-left: 5px;
+  color: #fe92ab;
+}
+.questionInfo .date {
+  font-size: 12px;
+  font-weight: 500;
+  color: #c4c4c4;
+}
+.answers {
+  margin: 30px auto 80px;
+}
+.answerItem {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 20px;
+}

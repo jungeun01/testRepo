@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import landingImg from "../assets/landing.svg";
 import styles from "./HomePage.module.css";
 import Button from "../components/Button";
+import Lined from "../components/Lined";
 
 function HomePage(props) {
   return (
@@ -10,7 +11,7 @@ function HomePage(props) {
       <Container className={styles.container}>
         <div className={styles.texts}>
           <h1 className={styles.heading}>
-            <span>코딩이 처음이라면,</span>
+            <Lined>코딩이 처음이라면,</Lined>
             <br />
             <strong>DWOS</strong>
           </h1>

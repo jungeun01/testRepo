@@ -35,3 +35,11 @@
   font-weight: 300;
   color: #878787;
 }
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.empttyList {
+}
