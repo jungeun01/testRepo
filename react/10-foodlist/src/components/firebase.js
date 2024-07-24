@@ -83,4 +83,47 @@ async function getLastNum(collectionName, field) {
   return lastId;
 }
 
-export { addDatas };
+//food list 데이터 가져오기!!~!!!
+async function getDatasOrderByLimit(collectionName, options) {
+  const { fieldName, limits } = options;
+  let q;
+  if (!options.lq) {
+    q = query(
+      getCollection(collectionName),
+      orderBy(fieldName, "desc"),
+      limit(limits)
+    );
+  } else {
+    q = query(
+      getCollection(collectionName),
+      orderBy(fieldName, "desc"),
+      startAfter(options.lq),
+      limit(limits)
+    );
+  }
+  const snapshot = await getDocs(q);
+  const docs = snapshot.docs;
+  const lastQuery = docs[docs.length - 1];
+  const resultData = docs.map((doc) => ({
+    ...doc.data(),
+    docId: doc.id,
+  }));
+  return { resultData, lastQuery };
+}
+
+//이미지 삭제
+// async function deleteDatas(collectionName, docId, imgUrl) {
+//   const storage = getStorage();
+
+//   try {
+//     const deleteRef = ref(storage, imgUrl);
+//     await deleteObject(deleteRef);
+
+//     const docRef = await doc(db, collectionName, docId);
+//     await deleteDoc(docRef);
+//     return true;
+//   } catch (error) {
+//     return false;
+//   }
+// }
+export { addDatas, getDatasOrderByLimit };
