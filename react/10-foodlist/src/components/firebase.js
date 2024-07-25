@@ -59,7 +59,10 @@ async function addDatas(collectionName, addObj) {
   addObj.updatedAt = time;
 
   // 컬렉션에 저장
-  await addDoc(getCollection(collectionName), addObj);
+  const result = await addDoc(getCollection(collectionName), addObj);
+  const docSnap = await getDoc(result);
+  const resultData = { ...docSnap.data(), docId: docSnap.id };
+  return resultData;
 }
 
 async function uploadImage(path, file) {
@@ -111,19 +114,68 @@ async function getDatasOrderByLimit(collectionName, options) {
   return { resultData, lastQuery };
 }
 
-//이미지 삭제
-// async function deleteDatas(collectionName, docId, imgUrl) {
-//   const storage = getStorage();
+//삭제 버튼을 누르면 삭제되는 함수우
+async function deleteDatas(collectionName, docId, imgUrl) {
+  // 스토리지에 있는 이미지를 삭제할 때 필요한 것==> 파일명(경로포함)or 파일 url
+  // 스토리지 객체생성!!~!~!!
+  const storage = getStorage();
+  let message;
 
-//   try {
-//     const deleteRef = ref(storage, imgUrl);
-//     await deleteObject(deleteRef);
+  try {
+    // 삭제할 파일의 참조객체 생성 (ref 함수 사용!!)
+    message = "이미지 삭제에 실패했습니다.\n관리자에게 문의하세요.";
+    const deleteRef = ref(storage, imgUrl);
+    // 파일 삭제
+    await deleteObject(deleteRef); //deleteObject()=삭제할 함수
 
-//     const docRef = await doc(db, collectionName, docId);
-//     await deleteDoc(docRef);
-//     return true;
-//   } catch (error) {
-//     return false;
-//   }
-// }
-export { addDatas, getDatasOrderByLimit };
+    message = "문서 삭제에 실패했습니다.\n관리자에게 문의하세요.";
+    // database에 있는 문서 삭제!
+    // 삭제할 문서의 참조객체 생성(doc 함수 사용)
+    const deleteDocRef = await doc(db, collectionName, docId);
+    await deleteDoc(deleteDocRef);
+    return { result: true, message: message };
+  } catch (error) {
+    return { result: false, message: message };
+  }
+}
+
+// 수정하고 다시 업로드 하는거
+async function updateDatas(collectionName, addObj, docId) {
+  const docRef = await doc(db, collectionName, docId);
+  const time = new Date().getTime();
+  addObj.updatedAt = time;
+  if (addObj.imgUrl !== null) {
+    // 기존 사진 Url 가져오기
+    const docSnap = await getDoc(docRef);
+    const prevImgUrl = docSnap.data().imgUrl;
+
+    //스토리지에서 기존사진 삭제
+    const storage = getStorage();
+    const deleteRef = ref(storage, prevImgUrl);
+    await deleteObject(deleteRef);
+
+    const uuid = crypto.randomUUID();
+    const path = `food/${uuid}`;
+    const url = await uploadImage(path, addObj.imgUrl);
+    addObj.imgUrl = url;
+  } else {
+    delete addObj["imgUrl"];
+  }
+  await updateDoc(docRef, addObj);
+  const updatedData = await getDoc(docRef);
+  const resultData = { docId: updatedData.id, ...updatedData.data() };
+  return resultData;
+}
+
+// input검색할거 데이터 담기
+async function getDatas(collectionName) {
+  const collect = await collection(db, collectionName);
+  const snapshot = await getDocs(collect);
+  const resultData = snapshot.docs.map((doc) => ({
+    docId: doc.id,
+    ...doc.data(),
+  }));
+  return resultData;
+}
+
+export { addDatas, getDatasOrderByLimit, deleteDatas, updateDatas, getDatas };

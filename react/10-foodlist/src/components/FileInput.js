@@ -3,8 +3,9 @@ import placeholderImg from "../assets/preview-placeholder.png";
 import resetImg from "../assets/ic-reset-white.png";
 import "./FileInput.css";
 
-function FileInput({ name, value, onChange }) {
-  const [preview, setPreview] = useState();
+function FileInput({ name, value, onChange, initialPreview }) {
+  const [preview, setPreview] = useState(initialPreview);
+
   const handleChange = (e) => {
     const nextValue = e.target.files[0];
     onChange(name, nextValue);
@@ -19,6 +20,7 @@ function FileInput({ name, value, onChange }) {
     const nextPreview = URL.createObjectURL(value);
     setPreview(nextPreview);
     // console.log(nextPreview);
+
     return () => {
       setPreview(null);
       URL.revokeObjectURL(nextPreview);

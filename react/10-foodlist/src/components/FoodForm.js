@@ -3,6 +3,7 @@ import FileInput from "./FileInput";
 import "./FoodForm.css";
 import { useState } from "react";
 import { addDatas } from "./firebase";
+
 const INITIAL_VALUES = { title: "", content: "", calorie: 0, imgUrl: null };
 
 function sanitize(type, value) {
@@ -15,8 +16,15 @@ function sanitize(type, value) {
   }
 }
 
-function FoodForm(props) {
-  const [values, setValues] = useState(INITIAL_VALUES);
+function FoodForm({
+  onSubmit,
+  onSubmitSuccess,
+  onCancel,
+  initialValues = INITIAL_VALUES,
+  initialPreview,
+}) {
+  const [values, setValues] = useState(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleChange = (name, value) => {
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
@@ -24,9 +32,14 @@ function FoodForm(props) {
     const { name, value, type } = e.target;
     handleChange(name, sanitize(type, value));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resultData = await addDatas("food", values);
+    setIsSubmitting(true);
+    const resultData = await onSubmit("food", values);
+    onSubmitSuccess(resultData);
+    setIsSubmitting(false);
+    setValues(INITIAL_VALUES);
   };
 
   return (
@@ -36,6 +49,7 @@ function FoodForm(props) {
         name="imgUrl"
         value={values.imgUrl}
         onChange={handleChange}
+        initialPreview={initialPreview}
       />
       <div className="FoodForm-rows">
         <div className="FoodForm-title-calorie">
@@ -54,7 +68,20 @@ function FoodForm(props) {
             name="calorie"
             value={values.calorie}
           />
-          <button className="FoodForm-submit-button" type="submit">
+          {onCancel && ( //FoodForm에서는 취소버튼이 안나오고 FoodList 에서 수정버튼클릭시 취소버튼이 나오게 하는거
+            <button
+              className="FoodForm-cancel-button"
+              type="button"
+              onClick={() => onCancel(null)}
+            >
+              취소
+            </button>
+          )}
+          <button
+            className="FoodForm-submit-button"
+            type="submit"
+            disabled={isSubmitting}
+          >
             확인
           </button>
         </div>
