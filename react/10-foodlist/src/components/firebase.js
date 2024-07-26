@@ -13,6 +13,7 @@ import {
   orderBy,
   limit,
   startAfter,
+  where,
 } from "firebase/firestore";
 import {
   deleteObject,
@@ -125,6 +126,7 @@ async function deleteDatas(collectionName, docId, imgUrl) {
     // 삭제할 파일의 참조객체 생성 (ref 함수 사용!!)
     message = "이미지 삭제에 실패했습니다.\n관리자에게 문의하세요.";
     const deleteRef = ref(storage, imgUrl);
+
     // 파일 삭제
     await deleteObject(deleteRef); //deleteObject()=삭제할 함수
 
@@ -139,15 +141,21 @@ async function deleteDatas(collectionName, docId, imgUrl) {
   }
 }
 
-// 수정하고 다시 업로드 하는거
-async function updateDatas(collectionName, addObj, docId) {
+// 수정하고 확인버튼을 누른다음  업로드 하는애들!~!~(내가 작성한거)
+
+async function updateDatas(collectionName, addObj, docId, imgUrl) {
   const docRef = await doc(db, collectionName, docId);
-  const time = new Date().getTime();
+
+  const time = new Date().getTime(); //수정된 시간
+  //저장되어있는 시간 관련 필드들의 값이 밀리세컨드로 되어있기 때문에 getTime()함수 사용
   addObj.updatedAt = time;
+
+  // 사진 파일을 변경하지 않았을 때
   if (addObj.imgUrl !== null) {
     // 기존 사진 Url 가져오기
     const docSnap = await getDoc(docRef);
     const prevImgUrl = docSnap.data().imgUrl;
+    // 사진이 변경되지 않을ㄹ 때 imgUrl 값이 null 로 넘어오기 때문에
 
     //스토리지에서 기존사진 삭제
     const storage = getStorage();
@@ -167,6 +175,43 @@ async function updateDatas(collectionName, addObj, docId) {
   return resultData;
 }
 
+// 선생님이랑 같이한 수정하고 데이터 변경되는 코드
+
+// async function updateDatas(collectionName, docId, updateObj, imgUrl) {
+//   const docRef = await doc(db, collectionName, docId);
+//   // 저장되어있는 시간 관련 필드들의 값이 밀리세컨드로 되어있기 때문에 getTime() 함수 사용
+//   const time = new Date().getTime();
+
+//   // 사진 파일을 변경하지 않았을 때
+//   if (updateObj.imgUrl === null) {
+//     // 사진이 변경되지 않았을 때 imgUrl 값이 null 로 넘어오기 때문에
+//     // 그 상태로 문서를 update 해버리면 imgUrl 값이 null 로 바뀐다.
+//     // 그렇기 때문에 updateObj 에서 imgUrl 프로퍼티를 삭제해준다.
+//     delete updateObj["imgUrl"];
+//   } else {
+//     // 사진 파일을 변경했을 때
+//     // 기존 사진 삭제
+//     const storage = getStorage();
+//     const deleteRef = ref(storage, imgUrl);
+//     await deleteObject(deleteRef);
+
+//     // 변경한 사진을 스토리지에 저장
+//     const url = await uploadImage(createPath("food/"), updateObj.imgUrl);
+//     // 스토리지에 저장하고 그 파일의 url을 가져와서 updateObj 의 imgUrl 값을 변경해준다.
+//     // 왜 ?? 기존updateObj에 있는 imgUrl은 'file' 객체이고,
+//     // 우리가 데이터베이스에 저장해야 할 imgUrl 은 문자열이고 url 이기 때문에
+//     updateObj.imgUrl = url;
+//   }
+//   // updateAt 필드에 넣어줄 시간 데이터를 updateObj 에 넣어준다.
+//   updateObj.updatedAt = time;
+
+//   // 문서 필드 데이터 수정
+//   await updateDoc(docRef, updateObj);
+//   const docSnap = await getDoc(docRef);
+//   const resultData = { ...docSnap.data(), docId: docSnap.id };
+//   return resultData;
+// }
+
 // input검색할거 데이터 담기
 async function getDatas(collectionName) {
   const collect = await collection(db, collectionName);
@@ -177,5 +222,17 @@ async function getDatas(collectionName) {
   }));
   return resultData;
 }
+
+// 선생님이랑 만든 input 검색
+// async function getSearchDatas(collectionName,option){
+//   const q= query(
+//     getCollection(collectionName),
+//     where('title','>=',options.search),
+//     where('title','<=',options.search+'\uf8ff'),
+//     limit(options.limit)
+//   )
+//   const snapshot=await getDocs(q);
+//    const docs=snapshot.docs;
+// }
 
 export { addDatas, getDatasOrderByLimit, deleteDatas, updateDatas, getDatas };

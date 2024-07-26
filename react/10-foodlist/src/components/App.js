@@ -13,6 +13,8 @@ import {
   updateDatas,
 } from "./firebase";
 import { useState, useEffect } from "react";
+import LocaleSelect from "./LocaleSelect";
+import useTranslate from "../hooks/useTranslate";
 
 function AppSortButton({ children, selected, onClick }) {
   return (
@@ -35,6 +37,7 @@ function App() {
   const [lq, setLq] = useState();
   const [hasNext, setHasNext] = useState(true);
   const [allData, setAllData] = useState([]);
+  const t = useTranslate();
 
   // input창에 검색했을때 나오는 데이터
   const handleSubmit = (e) => {
@@ -153,13 +156,13 @@ function App() {
               selected={order === "createdAt"}
               onClick={handleNewestClick}
             >
-              최신순
+              {t("newest")}
             </AppSortButton>
             <AppSortButton
               selected={order === "calorie"}
               onClick={handleCalorieClick}
             >
-              칼로리순
+              {t("calorie")}
             </AppSortButton>
           </div>
         </div>
@@ -171,19 +174,21 @@ function App() {
         />
         {hasNext && (
           <button className="App-button" onClick={handleLoadMore}>
-            더보기
+            {t("load more")}
           </button>
         )}
       </div>
       <div className="App-footer">
         <div className="App-footer-container">
           <img src={logoTextImg} />
-          <select>
+          <LocaleSelect />
+          {/* <select>
             <option>한국어</option>
             <option>English</option>
-          </select>
+          </select> */}
           <div className="App-footer-menu">
-            서비스 이용약관 | 개인정보 처리방침
+            {/* 서비스 이용약관 | 개인정보 처리방침 */}
+            {t("Privary Policy")}
           </div>
         </div>
       </div>

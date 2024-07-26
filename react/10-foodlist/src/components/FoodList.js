@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./FoodList.css";
 import FoodForm from "./FoodForm";
+import useTranslate from "../hooks/useTranslate";
 
 // 날짜 뽑아오기
 function formatDate(value) {
@@ -10,6 +11,7 @@ function formatDate(value) {
 
 function FoodListItem({ item, onDelete, onEdit }) {
   const { title, content, calorie, createdAt, imgUrl, docId, id } = item;
+  const t = useTranslate();
 
   // 삭제버튼을 눌렀을때 삭제.
   const handleDeleteClick = () => {
@@ -37,13 +39,13 @@ function FoodListItem({ item, onDelete, onEdit }) {
               className="FoodListItem-edit-button"
               onClick={handleEditClick}
             >
-              수정
+              {t("edit button")}
             </button>
             <button
               className="FoodListItem-delete-button"
               onClick={handleDeleteClick}
             >
-              삭제
+              {t("delete button")}
             </button>
           </div>
         </div>
