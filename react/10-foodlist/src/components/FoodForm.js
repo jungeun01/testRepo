@@ -4,6 +4,7 @@ import "./FoodForm.css";
 import { useState } from "react";
 import { addDatas } from "./firebase";
 import useTranslate from "../hooks/useTranslate";
+import useAsync from "../hooks/useAsync";
 
 const INITIAL_VALUES = { title: "", content: "", calorie: 0, imgUrl: null };
 
@@ -25,7 +26,8 @@ function FoodForm({
   initialPreview,
 }) {
   const [values, setValues] = useState(initialValues);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [isSubmitting, setIsSubmitting] = useState(false); //비동기 통신의 결과를 기다려주는 역할
+  const [isSubmitting, submittingError, onSubmitAsync] = useAsync(onSubmit);
 
   const t = useTranslate();
 
@@ -39,10 +41,10 @@ function FoodForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    const resultData = await onSubmit("food", values);
+    // setIsSubmitting(true);
+    const resultData = await onSubmitAsync("food", values);
+    // setIsSubmitting(false);
     onSubmitSuccess(resultData);
-    setIsSubmitting(false);
     setValues(INITIAL_VALUES);
   };
 

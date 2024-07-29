@@ -15,6 +15,7 @@ import {
 import { useState, useEffect } from "react";
 import LocaleSelect from "./LocaleSelect";
 import useTranslate from "../hooks/useTranslate";
+import useAsync from "../hooks/useAsync";
 
 function AppSortButton({ children, selected, onClick }) {
   return (
@@ -38,6 +39,9 @@ function App() {
   const [hasNext, setHasNext] = useState(true);
   const [allData, setAllData] = useState([]);
   const t = useTranslate();
+  // const [isLoading, setIsLoading] = useState(false); //비동기 통신의 결과를 기다려주는 역할
+  const [isLoading, loadingError, getDatasAsync] =
+    useAsync(getDatasOrderByLimit);
 
   // input창에 검색했을때 나오는 데이터
   const handleSubmit = (e) => {
@@ -57,10 +61,13 @@ function App() {
 
   // foodList데이터
   const handleLoad = async (options) => {
-    const { resultData, lastQuery } = await getDatasOrderByLimit(
-      "food",
-      options
-    ); //컬렉션명,옵션안에들어간것들
+    // setIsLoading(true);
+    // const { resultData, lastQuery } = await getDatasOrderByLimit(
+    //   "food",
+    //   options
+    // ); //컬렉션명,옵션안에들어간것들
+    // setIsLoading(false);
+    const { resultData, lastQuery } = await getDatasAsync("food", options);
     if (!options.lq) {
       // listItems = resultData;
       setItems(resultData);
@@ -173,7 +180,11 @@ function App() {
           onUpdateSuccess={handleUpdateSuccess}
         />
         {hasNext && (
-          <button className="App-button" onClick={handleLoadMore}>
+          <button
+            className="App-button"
+            onClick={handleLoadMore}
+            disabled={isLoading}
+          >
             {t("load more")}
           </button>
         )}
