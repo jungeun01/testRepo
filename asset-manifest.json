@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/testRepo.git/static/css/main.fa5783d1.css",
-    "main.js": "/testRepo.git/static/js/main.4cf20681.js",
-    "static/media/몽.jpg": "/testRepo.git/static/media/몽.ccb4483129ef42e64a43.jpg",
-    "index.html": "/testRepo.git/index.html",
-    "main.fa5783d1.css.map": "/testRepo.git/static/css/main.fa5783d1.css.map",
-    "main.4cf20681.js.map": "/testRepo.git/static/js/main.4cf20681.js.map"
+    "main.css": "/testRepo/static/css/main.fa5783d1.css",
+    "main.js": "/testRepo/static/js/main.e91fc133.js",
+    "static/media/몽.jpg": "/testRepo/static/media/몽.ccb4483129ef42e64a43.jpg",
+    "index.html": "/testRepo/index.html",
+    "main.fa5783d1.css.map": "/testRepo/static/css/main.fa5783d1.css.map",
+    "main.e91fc133.js.map": "/testRepo/static/js/main.e91fc133.js.map"
   },
   "entrypoints": [
     "static/css/main.fa5783d1.css",
-    "static/js/main.4cf20681.js"
+    "static/js/main.e91fc133.js"
   ]
 }
