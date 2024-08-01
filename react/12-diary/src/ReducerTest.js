@@ -21,6 +21,7 @@ const initialState = { count: 0 }; //state의 초기값
 // 상태관리의 복잡성이 줄어들고, 상태 변경이 어디에서 이루어지는지를 쉽게 추적할 수 있다.
 function ReducerTest() {
   const [state, dispatch] = useReducer(reducer, initialState); //(리듀서 함수,state의 초기값)을 넣어준다.
+  //  dispatch 함수 중요=>
 
   // STATE를 사용하여 만든함수.
   // const [count, setCount] = useState(0); //상태. 화면과 연결

@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Header from "./Header";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../util/emotion";
 import EmotionItem from "./EmotionItem";
 import "./DiaryEditor.css";
+import { DiaryDispatchContext } from "../App";
 
 const INITIAL_VALUES = {
-  createdAt: "",
+  date: "",
   content: "",
   emotion: 3,
 };
 
 function DiaryEditor(props) {
+  const { onCreate } = useContext(DiaryDispatchContext); //DiaryEditor 얘네가 컨텍스트를 사용하고싶으면 useContext()사용하고,
+  //  (이안에는 컨텍스트를 넣어준다.)=>app.js안에있는 컨텍스트 번위설정안에 있는value를 사용하고 싶으면 ,,,음?
+  const contentRef = useRef();
   const navigate = useNavigate();
   //   1. 날짜, 감정, 텍스트 관리할 상태를 만들어야한다.
   const [values, setValues] = useState(INITIAL_VALUES);
@@ -28,6 +32,19 @@ function DiaryEditor(props) {
   };
   // 4. 상태 변경 함수를 emotionItem의 onClick에 전달
   // 5. emotionItem_on${id} 클래스가 적용될 수 있도록 만든다
+
+  const handleSubmit = () => {
+    if (values.content.trim().length < 1) {
+      handleChange("content", "");
+      contentRef.current.focus();
+      return;
+    }
+    if (window.confirm("새로운 일기를 저장하시겠습니까?")) {
+      onCreate(values);
+    }
+    navigate("/", { replace: true });
+  };
+
   return (
     <div className="diaryEditor">
       <Header
@@ -36,7 +53,7 @@ function DiaryEditor(props) {
           <Button
             text={"< 뒤로가기"}
             onClick={() => {
-              navigate("/");
+              navigate(-1);
             }}
           />
         }
@@ -48,8 +65,9 @@ function DiaryEditor(props) {
             <input
               className="input_date"
               type="date"
-              name="createdAt"
+              name="date"
               onChange={handleInputChange}
+              value={values.date}
             />
           </div>
         </section>
@@ -76,13 +94,19 @@ function DiaryEditor(props) {
               placeholder="오늘은 어땠나요"
               name="content"
               onChange={handleInputChange}
+              value={values.content}
+              ref={contentRef}
             />
           </div>
         </section>
         <section>
           <div className="control_box">
             <Button text={"취소하기"} />
-            <Button text={"작성완료"} type={"positive"} />
+            <Button
+              text={"작성완료"}
+              type={"positive"}
+              onClick={handleSubmit}
+            />
           </div>
         </section>
       </div>
