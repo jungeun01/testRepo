@@ -43,7 +43,7 @@ function HomePage(props) {
     );
     // 4.setSortedItem 함수 사용
     setSortedItem(newItem);
-  }, [curDate]);
+  }, [curDate, diaryList]);
   // console.log(curDate.getTime());
   // console.log(new Date(2024, 8).getTime());
   return (
