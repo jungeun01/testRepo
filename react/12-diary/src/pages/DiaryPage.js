@@ -10,7 +10,7 @@ import { changeTitle } from "../util/changeTilte";
 function DiaryPage(props) {
   const navigate = useNavigate();
   const { id } = useParams();
-  const diaryList = useContext(DiaryStateContext);
+  const { diaryList } = useContext(DiaryStateContext);
   const [data, setData] = useState();
 
   //   console.log(diaryList);

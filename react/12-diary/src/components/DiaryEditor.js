@@ -14,7 +14,7 @@ const INITIAL_VALUES = {
 };
 
 function DiaryEditor({ originData = INITIAL_VALUES, isEdit }) {
-  const { onCreate, onUpdate } = useContext(DiaryDispatchContext); //DiaryEditor 얘네가 컨텍스트를 사용하고싶으면 useContext()사용하고,
+  const { onCreate, onUpdate, onDelete } = useContext(DiaryDispatchContext); //DiaryEditor 얘네가 컨텍스트를 사용하고싶으면 useContext()사용하고,
   //  (이안에는 컨텍스트를 넣어준다.)=>app.js안에있는 컨텍스트 번위설정안에 있는value를 사용하고 싶으면 ,,,음?
   const contentRef = useRef();
   const navigate = useNavigate();
@@ -52,7 +52,13 @@ function DiaryEditor({ originData = INITIAL_VALUES, isEdit }) {
     }
     navigate("/", { replace: true });
   };
-
+  // 삭제하는 버튼
+  const handleDelete = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onDelete(originData.docId);
+      navigate("/", { replace: true });
+    }
+  };
   // 수정시 데이터의 날짜표시.?!
   useEffect(() => {
     if (isEdit) {
@@ -76,7 +82,15 @@ function DiaryEditor({ originData = INITIAL_VALUES, isEdit }) {
             }}
           />
         }
-        rightChild={isEdit && <Button text={"삭제하기"} type={"negative"} />}
+        rightChild={
+          isEdit && (
+            <Button
+              text={"삭제하기"}
+              type={"negative"}
+              onClick={handleDelete}
+            />
+          )
+        }
       />
       <div>
         <section>

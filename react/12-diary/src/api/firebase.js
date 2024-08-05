@@ -14,6 +14,7 @@ import {
   getDocs,
   updateDoc,
   doc,
+  deleteDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -33,7 +34,7 @@ function getCollection(collectionName) {
   return collection(db, collectionName);
 }
 
-function getUserAuth() {
+export function getUserAuth() {
   return auth;
 }
 async function getLastNum(collectionName, field) {
@@ -112,5 +113,15 @@ export async function updateDatas(collectionName, docId, updateObj) {
     return resultData;
   } catch (error) {
     console.log("Error Update:", error);
+  }
+}
+
+export async function deleteDatas(collectionName, docId) {
+  try {
+    const docRef = doc(db, collectionName, docId);
+    await deleteDoc(docRef); //여기에서 딱 문서삭제됨.
+    return true;
+  } catch (error) {
+    console.log("Error Delete:", error);
   }
 }
