@@ -56,10 +56,10 @@ function getQuery(collectionName, queryOption) {
   const collect = getCollection(collectionName);
   let q = query(collect);
 
-  // const condition = [
-  //   { field: "text", operator: "==", value: "test" },
-  //   { field: "uid", operator: "==", value: "xjdiwjKDJ2jdkxJND2J" },
-  // ];
+  const condition = [
+    { field: "text", operator: "==", value: "test" },
+    { field: "uid", operator: "==", value: "xjdiwjKDJ2jdkxJND2J" },
+  ];
 
   // where 조건
   conditions.forEach((condition) => {

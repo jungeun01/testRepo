@@ -3,7 +3,7 @@ import Button from "./Button";
 import "./DiaryItem.css";
 import { useNavigate } from "react-router-dom";
 
-function DiaryItem({ date, emotion, content, id }) {
+function DiaryItem({ date, emotion, content, id, isAuthenticated }) {
   const navigate = useNavigate();
   const goDetail = () => {
     navigate(`/diary/${id}`);
@@ -26,9 +26,11 @@ function DiaryItem({ date, emotion, content, id }) {
           25
         )}...`}</div>
       </div>
-      <div className="btn_wrapper">
-        <Button text={"수정하기"} onClick={goEdit} />
-      </div>
+      {isAuthenticated && (
+        <div className="btn_wrapper">
+          <Button text={"수정하기"} onClick={goEdit} />
+        </div>
+      )}
     </div>
   );
 }

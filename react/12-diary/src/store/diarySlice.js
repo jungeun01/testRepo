@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDatas } from "../api/firebase";
+import { addDatas, deleteDatas, getDatas, updateDatas } from "../api/firebase";
 
 const diarySlice = createSlice({
   name: "diary",
@@ -23,6 +23,27 @@ const diarySlice = createSlice({
       })
       .addCase(fetchItems.rejected, (state, action) => {
         state.status = "fail";
+      })
+      .addCase(addItem.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        state.status = "compelete";
+      })
+
+      .addCase(updateItem.fulfilled, (state, action) => {
+        // state.items = state.items.map((item) => {
+        //   item.id === action.payload.id ? action.payload : item;
+        // });
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload
+        );
+        state.items[index] = action.payload;
+        state.status = "compelete";
+      })
+      .addCase(deleteItem.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          (item) => item.docId !== action.payload
+        );
+        state.status = "compelet";
       });
   }, //비동기 작업이 포함된 애들을 넣어준다
 });
@@ -41,7 +62,42 @@ const fetchItems = createAsyncThunk(
     }
   }
 );
-//createAsyncThunk()함수안에 처음에 들어갈 파라미터는 action -
+//createAsyncThunk()함수안에 처음에 들어갈 파라미터는 type,payload
 
+const addItem = createAsyncThunk(
+  "items/addItem",
+  async ({ collectionName, addObj }) => {
+    try {
+      const resultData = await addDatas(collectionName, addObj);
+      return resultData;
+    } catch (error) {
+      console.log("ADD Error:", error);
+    }
+  }
+);
+
+const updateItem = createAsyncThunk(
+  "items/updateItem",
+  async ({ collectionName, docId, updateObj }) => {
+    try {
+      const resultData = await updateDatas(collectionName, docId, updateObj);
+      return resultData;
+    } catch (error) {
+      console.log("UPDATE Error:", error);
+    }
+  }
+);
+
+const deleteItem = createAsyncThunk(
+  "items/deleteItem",
+  async ({ collectionName, docId }) => {
+    try {
+      const resultData = await deleteDatas(collectionName, docId);
+      return docId;
+    } catch (error) {
+      console.log("DELETE Error:", error);
+    }
+  }
+);
 export default diarySlice;
-export { fetchItems };
+export { fetchItems, addItem, updateItem, deleteItem };
