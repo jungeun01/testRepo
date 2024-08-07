@@ -8,7 +8,7 @@
 .FoodList > li {
   padding: 22px;
   border-radius: 15px;
-  box-shadow: 0 0 9px rgba(100, 126, 118, 0.09);
+
   background-color: #fff;
 }
 .FoodListItem {
@@ -44,9 +44,9 @@
   flex-shrink: 1;
 }
 .FoodListItem-calorie {
-  background-color: #eaf3ea;
   padding: 6px 8px 5px;
   border-radius: 6px;
+  background-color: #eaf3ea;
   font-size: 15px;
   font-weight: bold;
   color: #4caf50;
@@ -56,33 +56,32 @@
   margin: 0 0 18px;
   font-size: 16px;
   color: #6d7372;
-  max-height: 52px;
-
+  max-height: 48px;
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
 }
-.FoodListItem-date-button {
+.FoodListItem-date-buttons {
   flex: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .FoodListItem-date {
-  margin: 0;
   flex: 1 1;
+  margin: 0;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.25px;
   color: #c6cdc1;
 }
-.FoodListItem-button {
+.FoodListItem-buttons {
   flex: none;
   display: flex;
   gap: 8px;
 }
-.FoodListItem-button > button {
+.FoodListItem-buttons > button {
   background-color: transparent;
   cursor: pointer;
   padding: 6px 12px 4px;

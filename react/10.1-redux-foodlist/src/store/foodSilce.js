@@ -1,70 +1,102 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addDatas, deleteDatas } from "../components/firebase";
-import { updateDatas } from "../../../12-diary/src/api/firebase";
+import {
+  addDatas,
+  deleteDatas,
+  getDatasOrderByLimit,
+  updateDatas,
+} from "../api/firebase";
+
 const foodSlice = createSlice({
   name: "food",
   initialState: {
     items: [],
-    error: null,
-    status: "welcome",
+    lq: undefined,
+    isLoading: false,
+    loadingError: "",
+    order: "createdAt",
+    hasNext: true,
+  },
+  reducers: {
+    setOrder: (state, action) => {
+      state.order = action.payload;
+    },
+    setHasNext: (state, action) => {
+      state.hasNext = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchItems.pending, (state, action) => {
-        state.status = "Loading";
+        state.isLoading = true;
       })
       .addCase(fetchItems.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.status = "Loading";
+        if (action.payload.isReset) {
+          state.items = action.payload.resultData;
+        } else {
+          action.payload.resultData.forEach((data) => {
+            state.items.push(data);
+          });
+          // state.items = [...state.items, ...action.payload.resultData];
+        }
+        // if(!action.payload.lastQuery){
+        //   state.hasNext=false;
+        // }else{
+        //   state.hasNext=true
+
+        // } if문이나 그 삼항연산자나 !! 쓴 부정연산자 랑 셋다 똑같음.
+        // state.hasNext=!!action.payload.lastQuery;
+        state.hasNext = action.payload.lastQuery ? true : false;
+        state.lq = action.payload.lastQuery;
+        state.isLoading = false;
       })
       .addCase(fetchItems.rejected, (state, action) => {
-        state.status = "fail";
-      })
-      .addCase(deleteItem.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          (item) => item.docId !== action.payload
-        );
-        state.status = "compelet";
+        state.isLoading = false;
+        state.loadingError = action.payload;
       })
       .addCase(updateItem.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          (item) => item.id === action.payload
+          (item) => item.id === action.payload.id
         );
+        state.items[index] = action.payload;
+        state.isLoading = false;
       });
   },
 });
 
 const fetchItems = createAsyncThunk(
   "items/fetchItems",
-  async (collectionName, addObj) => {
+  async ({ collectionName, queryOptions }) => {
     try {
-      const resultData = await addDatas(collectionName, addObj);
+      const resultData = await getDatasOrderByLimit(
+        collectionName,
+        queryOptions
+      );
+      resultData.isReset = !queryOptions.lastQuery ? true : false;
       return resultData;
     } catch (error) {
-      console.log("FETCH Error:", error);
+      return "FETCH Error:" + error;
+      // console.log("FETCH Error:", error);
     }
   }
 );
-
-const deleteItem = createAsyncThunk(
-  "items/deleteItem",
-  async ({ collectionName, docId, imgUrl }) => {
-    try {
-      const resultData = await deleteDatas(collectionName, docId, imgUrl);
-      return docId;
-    } catch (error) {
-      console.log("DELETE Error:", error);
-    }
-  }
-);
-
 const updateItem = createAsyncThunk(
   "items/updateItem",
-  async ({ collectionName, docId, addObj }) => {
+  async ({ collectionName, docId, updateObj, imgUrl }) => {
     try {
-      const resultData = await updateDatas(collectionName, docId, addObj);
+      const resultData = await updateDatas(
+        collectionName,
+        docId,
+        updateObj,
+        imgUrl
+      );
       return resultData;
-    } catch (error) {}
+    } catch (error) {
+      return "UPDATE Error:" + error;
+    }
   }
 );
+
+export default foodSlice;
+export { fetchItems, updateItem };
+export const { setOrder, setHasNext } = foodSlice.actions;

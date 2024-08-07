@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import "./FoodList.css";
 import FoodForm from "./FoodForm";
-import useTranslate from "../hooks/useTranslate";
 
-// 날짜 뽑아오기
 function formatDate(value) {
   const date = new Date(value);
-  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
 }
 
 function FoodListItem({ item, onDelete, onEdit }) {
-  const { title, content, calorie, createdAt, imgUrl, docId, id } = item;
-  const t = useTranslate();
-
-  // 삭제버튼을 눌렀을때 삭제.
+  const { title, createdAt, content, calorie, imgUrl, docId, id } = item;
   const handleDeleteClick = () => {
     onDelete(docId, imgUrl);
   };
-
-  // 수정버튼 눌렀을때 수정.
   const handleEditClick = () => {
     onEdit(id);
   };
-
   return (
     <div className="FoodListItem">
       <img className="FoodListItem-preview" src={imgUrl} />
@@ -32,20 +24,20 @@ function FoodListItem({ item, onDelete, onEdit }) {
           <span className="FoodListItem-calorie">{calorie}kcal</span>
         </div>
         <p className="FoodListItem-content">{content}</p>
-        <div className="FoodListItem-date-button">
+        <div className="FoodListItem-date-buttons">
           <p className="FoodListItem-date">{formatDate(createdAt)}</p>
-          <div className="FoodListItem-button">
+          <div className="FoodListItem-buttons">
             <button
               className="FoodListItem-edit-button"
               onClick={handleEditClick}
             >
-              {t("edit button")}
+              수정
             </button>
             <button
               className="FoodListItem-delete-button"
               onClick={handleDeleteClick}
             >
-              {t("delete button")}
+              삭제
             </button>
           </div>
         </div>
@@ -54,31 +46,31 @@ function FoodListItem({ item, onDelete, onEdit }) {
   );
 }
 
-function FoodList({ items, onUpdate, onUpdateSuccess, onDelete }) {
+function FoodList({ items, onDelete, onUpdate, onUpdateSuccess }) {
   const [editingId, setEditingId] = useState(null);
-
   return (
     <ul className="FoodList">
       {items.map((item) => {
         if (item.id === editingId) {
-          const { title, calorie, content, imgUrl, docId } = item;
+          const { id, title, imgUrl, calorie, content, docId } = item;
           const initialValues = { title, calorie, content, imgUrl: null };
 
-          const handleSubmit = (collectionName, addObj) => {
-            const result = onUpdate(collectionName, addObj, docId);
+          const handleSubmit = (collectionName, updateObj) => {
+            const result = onUpdate(collectionName, docId, updateObj, imgUrl);
             return result;
           };
+
           const handleSubmitSuccess = (result) => {
             onUpdateSuccess(result);
-            // 수정폼 리스트로 변경
+            // 수정 폼을 리스트로 변경
             setEditingId(null);
           };
           return (
             <li key={item.docId}>
               <FoodForm
+                onCancel={setEditingId}
                 initialValues={initialValues}
                 initialPreview={imgUrl}
-                onCancel={setEditingId}
                 onSubmit={handleSubmit}
                 onSubmitSuccess={handleSubmitSuccess}
               />
@@ -88,9 +80,9 @@ function FoodList({ items, onUpdate, onUpdateSuccess, onDelete }) {
         return (
           <li key={item.docId}>
             <FoodListItem
-              onEdit={setEditingId}
               item={item}
               onDelete={onDelete}
+              onEdit={setEditingId}
             />
           </li>
         );

@@ -131,25 +131,12 @@ async function getLastNum(collectionName, field) {
 
 //food list 데이터 가져오기!!~!!!
 async function getDatasOrderByLimit(collectionName, options) {
-  // const { fieldName, limits } = options;
-  let q = getQuery(collectionName, options);
-  // if (!options.lq) {
-  //   q = query(
-  //     getCollection(collectionName),
-  //     orderBy(fieldName, "desc"),
-  //     limit(limits)
-  //   );
-  // } else {
-  //   q = query(
-  //     getCollection(collectionName),
-  //     orderBy(fieldName, "desc"),
-  //     startAfter(options.lq),
-  //     limit(limits)
-  //   );
-  // }
+  const q = getQuery(collectionName, options);
+
   const snapshot = await getDocs(q);
   const docs = snapshot.docs;
   const lastQuery = docs[docs.length - 1];
+  // console.log(lastQuery);
   const resultData = docs.map((doc) => ({
     ...doc.data(),
     docId: doc.id,
@@ -185,35 +172,39 @@ async function deleteDatas(collectionName, docId, imgUrl) {
 
 // 수정하고 확인버튼을 누른다음  업로드 하는애들!~!~(내가 작성한거)
 
-async function updateDatas(collectionName, addObj, docId, imgUrl) {
+async function updateDatas(collectionName, docId, updateObj, imgUrl) {
   const docRef = await doc(db, collectionName, docId);
-
-  const time = new Date().getTime(); //수정된 시간
-  //저장되어있는 시간 관련 필드들의 값이 밀리세컨드로 되어있기 때문에 getTime()함수 사용
-  addObj.updatedAt = time;
+  // 저장되어있는 시간 관련 필드들의 값이 밀리세컨드로 되어있기 때문에 getTime() 함수 사용
+  const time = new Date().getTime();
 
   // 사진 파일을 변경하지 않았을 때
-  if (addObj.imgUrl !== null) {
-    // 기존 사진 Url 가져오기
-    const docSnap = await getDoc(docRef);
-    const prevImgUrl = docSnap.data().imgUrl;
-    // 사진이 변경되지 않을ㄹ 때 imgUrl 값이 null 로 넘어오기 때문에
-
-    //스토리지에서 기존사진 삭제
+  if (updateObj.imgUrl === null) {
+    // 사진이 변경되지 않았을 때 imgUrl 값이 null 로 넘어오기 때문에
+    // 그 상태로 문서를 update 해버리면 imgUrl 값이 null 로 바뀐다.
+    // 그렇기 때문에 updateObj 에서 imgUrl 프로퍼티를 삭제해준다.
+    delete updateObj["imgUrl"];
+  } else {
+    // 사진 파일을 변경했을 때
+    // 기존 사진 삭제
     const storage = getStorage();
-    const deleteRef = ref(storage, prevImgUrl);
+    const deleteRef = ref(storage, imgUrl);
     await deleteObject(deleteRef);
 
-    const uuid = crypto.randomUUID();
-    const path = `food/${uuid}`;
-    const url = await uploadImage(path, addObj.imgUrl);
-    addObj.imgUrl = url;
-  } else {
-    delete addObj["imgUrl"];
+    // 변경한 사진을 스토리지에 저장
+    const url = await uploadImage(createPath("food/"), updateObj.imgUrl);
+    // 스토리지에 저장하고 그 파일의 url 을 가져와서 updateObj 의 imgUrl 값을 변경해준다.
+    // 왜? 기존 updateObj에 있는 imgUrl 은 'File' 객체이고,
+    // 우리가 데이터베이스에 저장해야 할 imgUrl 은 문자열 url 이기 때문에
+    updateObj.imgUrl = url;
   }
-  await updateDoc(docRef, addObj);
-  const updatedData = await getDoc(docRef);
-  const resultData = { docId: updatedData.id, ...updatedData.data() };
+
+  // updatedAt 필드에 넣어줄 시간 데이터를 updateObj 에 넣어준다.
+  updateObj.updatedAt = time;
+
+  // 문서 필드 데이터 수정
+  await updateDoc(docRef, updateObj);
+  const docSnap = await getDoc(docRef);
+  const resultData = { ...docSnap.data(), docId: docSnap.id };
   return resultData;
 }
 
