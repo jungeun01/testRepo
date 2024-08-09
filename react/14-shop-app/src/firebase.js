@@ -77,3 +77,11 @@ export async function getDatas(collectionName, queryOptions) {
   const resultData = docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
   return resultData;
 }
+export async function getData(collectionName, queryOptions) {
+  const q = getQuery(collectionName, queryOptions);
+  const snapshot = await getDocs(q);
+  const doc = snapshot.docs[0];
+  const resultData = { ...doc.data(), docId: doc.id };
+  return resultData;
+  // 무조건 하나의 데이터만 가져올때(조회할때)!!!!
+}

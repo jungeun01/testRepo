@@ -28,7 +28,7 @@ const productsSlice = createSlice({
 });
 
 const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
+  "product/fetchProduct",
   async ({ collectionName, queryOptions }) => {
     try {
       const resultData = await getDatas(collectionName, queryOptions);
@@ -41,3 +41,4 @@ const fetchProducts = createAsyncThunk(
 
 export default productsSlice.reducer;
 export { fetchProducts };
+// 여러개의 product들을 관리하는 거

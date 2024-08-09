@@ -6,19 +6,19 @@ import { CategoriesName } from "../../../store/categories/categories";
 function FiltersCategory(props) {
   return (
     <div className={styles.filter_category}>
-      <CategoryTab text={"모두"} categoriesName={CategoriesName.All} />
+      <CategoryTab text={"모두"} categoryName={CategoriesName.All} />
       <CategoryTab
         text={"전자기기"}
-        categoriesName={CategoriesName.Electronics}
+        categoryName={CategoriesName.Electronics}
       />
-      <CategoryTab text={"쥬얼리"} categoriesName={CategoriesName.Jewelry} />
+      <CategoryTab text={"쥬얼리"} categoryName={CategoriesName.Jewelry} />
       <CategoryTab
         text={"남성의류"}
-        categoriesName={CategoriesName.MensClothing}
+        categoryName={CategoriesName.MensClothing}
       />
       <CategoryTab
         text={"여성의류"}
-        categoriesName={CategoriesName.WomensClothing}
+        categoryName={CategoriesName.WomensClothing}
       />
     </div>
   );

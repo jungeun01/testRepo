@@ -6,10 +6,10 @@ function CardItem({ item }) {
   const { title, price, image } = item;
   return (
     <li className={styles.card_item}>
-      <Link>
+      <Link to={`/product/${item.id}`}>
         <img src={image} />
       </Link>
-      <h5>{title}</h5>
+      <h5>{`${title.slice(0, 15)}...`}</h5>
       <div>
         <button>장바구니에 담기</button>
         <p>$ {price}</p>
