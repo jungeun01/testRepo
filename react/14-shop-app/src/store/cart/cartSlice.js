@@ -7,6 +7,7 @@ import {
   updateTotalAndQuantity,
 } from "../../firebase";
 import { json } from "react-router-dom";
+import { addDatasRest, deleteDatasRest, deleteDatasRestBatch } from "../../api";
 
 const initialState = {
   products: localStorage.getItem("cartProducts")
@@ -93,7 +94,8 @@ export const addCartItem = createAsyncThunk(
       const addItem = products.find(
         (sliceProduct) => sliceProduct.id === product.id
       );
-      await addCart(collectionName, addItem);
+      // await addCart(collectionName, addItem);
+      await addDatasRest(collectionName, addItem);
     } catch (error) {}
   }
 );
@@ -102,7 +104,9 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async ({ collectionName, productId }, thunkAPI) => {
     try {
-      const resultData = await deleteDatas(collectionName, productId);
+      // const resultData = await deleteDatas(collectionName, productId);
+      const resultData = await deleteDatasRest(collectionName + productId);
+      // return resultData;
       if (resultData) {
         thunkAPI.dispatch(deleteFromCart(productId));
       }
@@ -132,7 +136,24 @@ export const postOrder = createAsyncThunk(
   async ({ uid, cart }, thunkAPI) => {
     try {
       // createOrder 함수 호출
-      const result = await createOrder(uid, cart);
+      // const result = await createOrder(uid, cart);
+      const orderObj = {
+        cancelYn: "N",
+        createdAt: new Date().getTime(),
+        updatedAt: new Date().getTime(),
+        ...cart,
+      };
+
+      const result = await addDatasRest(
+        `/users/${uid}/orders/${crypto.randomUUID().slice(0, 20)}`,
+        orderObj
+      );
+
+      const deleteResult = await deleteDatasRestBatch(
+        `users/${uid}/cart`,
+        cart.products
+      );
+
       if (!result) {
         return;
       }
