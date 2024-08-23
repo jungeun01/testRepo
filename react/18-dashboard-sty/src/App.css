@@ -1,0 +1,30 @@
+.app-1 {
+  background-color: black;
+  height: 200px;
+}
+.app-2 {
+  display: flex;
+  flex-direction: column;
+}
+.app2 {
+  display: flex;
+}
+.app-2-1 {
+  background-color: bisque;
+  width: 60%;
+  height: 400px;
+}
+.app2-11 {
+  width: 40%;
+  background-color: aquamarine;
+  height: 400px;
+}
+
+/* .app-2-2 {
+  background-color: aqua;
+  width: 60%;
+} */
+.ddd {
+  background-color: blue;
+  height: 50%;
+}
